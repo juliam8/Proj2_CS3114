@@ -130,21 +130,19 @@ public class Parser {
      * Print the nodes within the DNA tree
      */
     private void print() {
-        if (mScan.hasNext()) {
-            String next = mScan.next();
-            if (next.contentEquals("lengths")) {
-                mTree.print(true, false);
-            }
-            else if (next.contentEquals("stats")) {
-                mTree.print(false, true);
-            }
-            else {
-                mTree.print(false, false);
-            }
+        //print
+        //remove a
+        if (mScan.hasNext("lengths")) {
+            mScan.next();
+            mTree.print(true, false);
+        }
+        else if (mScan.hasNext("stats")) {
+            mScan.next();
+            mTree.print(false, true);
         }
         else {
             mTree.print(false, false);
-        }        
+        }
     }
 
     /**
