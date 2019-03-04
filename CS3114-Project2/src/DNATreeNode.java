@@ -13,5 +13,5 @@ public interface DNATreeNode {
     boolean isLeaf();
     boolean isFlyweight();
     DNATreeNode insert(char[] sequence, int level);
-    void print(int level);
+    void print();
 }

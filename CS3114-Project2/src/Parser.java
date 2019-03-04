@@ -53,7 +53,7 @@ public class Parser {
                 mTree.search(mScan.next().toCharArray());
             } 
             else if (command.equals("print")) {
-                mTree.print(1);
+                mTree.print();
             }
         }
         mScan.close();

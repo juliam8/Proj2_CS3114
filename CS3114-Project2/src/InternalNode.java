@@ -46,20 +46,20 @@ public class InternalNode implements DNATreeNode {
      */
     public DNATreeNode insert(char[] sequence, int level) {
         nodeLevel = level;
-        if (level == sequence.length) {
+        if (level-1 == sequence.length) {
             LeafNode n = new LeafNode(sequence);
             set$(n);
         }
-        else if (sequence[level] == 'A') {
+        else if (sequence[level-1] == 'A') {
             setA(a.insert(sequence, level + 1));
         }
-        else if (sequence[level] == 'C') {
+        else if (sequence[level-1] == 'C') {
             setC(c.insert(sequence, level + 1));
         }
-        else if (sequence[level] == 'G') {
+        else if (sequence[level-1] == 'G') {
             setG(g.insert(sequence, level + 1));
         }
-        else if (sequence[level] == 'T') {
+        else if (sequence[level-1] == 'T') {
             setT(t.insert(sequence, level + 1));
         }
         return this;
@@ -69,25 +69,32 @@ public class InternalNode implements DNATreeNode {
      * Prints out an Internal Node key
      * @param node
      */
-    public void print(int level) {
-        for (int i=0; i<nodeLevel; i++)
-            System.out.print("  ");
+    public void print() {
         System.out.println("I");
-        for (int i=0; i<nodeLevel; i++)
+        for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
-        a.print(level);
-        for (int i=0; i<nodeLevel; i++)
+        }
+        a.print();
+        
+        for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
-        c.print(level);
-        for (int i=0; i<nodeLevel; i++)
+        }
+        c.print();
+        
+        for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
-        g.print(level);
-        for (int i=0; i<nodeLevel; i++)
+        }
+        g.print();
+        
+        for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
-        t.print(level);
-        for (int i=0; i<nodeLevel; i++)
+        }
+        t.print();
+        
+        for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
-        $.print(level);
+        }
+        $.print();
     }
     
     /**
