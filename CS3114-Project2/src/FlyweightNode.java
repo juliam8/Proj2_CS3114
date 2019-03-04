@@ -17,7 +17,8 @@ public class FlyweightNode implements DNATreeNode {
     
     /**
      * Replaces empty node with a leaf node
-     * @param sequence
+     * @param sequence the DNA sequence to insert
+     * @param level the level at which to insert
      * @return the new node 
      */
     public DNATreeNode insert(char[] sequence, int level) {
@@ -30,9 +31,10 @@ public class FlyweightNode implements DNATreeNode {
     
     /**
      * Prints out an empty key
-     * @param root
+     * @param len boolean whether or not to print length
+     * @param stat boolean whether or not to print stats
      */
-    public void print() {
+    public void print(boolean len, boolean stat) {
         System.out.println("E");
     }
     

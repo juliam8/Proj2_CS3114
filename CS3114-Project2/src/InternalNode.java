@@ -14,7 +14,7 @@ public class InternalNode implements DNATreeNode {
     
     /**
      * Default Constructor
-     * sets all child pointers to the flyweight
+     * Sets all child pointers to the flyweight
      */
     InternalNode(){
         a = new FlyweightNode();
@@ -40,7 +40,9 @@ public class InternalNode implements DNATreeNode {
     }
     
     /**
-     * @param sequence
+     * Inserts a node at a certain level
+     * @param sequence the DNA sequence to insert
+     * @param level the level at which the node is
      * @return DNATreeNode 
      */
     public DNATreeNode insert(char[] sequence, int level) {
@@ -100,37 +102,39 @@ public class InternalNode implements DNATreeNode {
     
     /**
      * Prints out an Internal Node key
-     * @param node
+     * @param len boolean whether or not to print length
+     * @param stat boolean whether or not to print stats
      */
-    public void print() {
+    public void print(boolean len, boolean stat) {
         System.out.println("I");
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
-        a.print();
+        a.print(len, stat);
         
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
-        c.print();
+        c.print(len, stat);
         
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
-        g.print();
+        g.print(len, stat);
         
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
-        t.print();
+        t.print(len, stat);
         
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
-        $.print();
+        $.print(len, stat);
     }
     
     /**
+     * Setter for A child
      * @param inA
      */
     public void setA(DNATreeNode inA) {
@@ -138,6 +142,7 @@ public class InternalNode implements DNATreeNode {
     }
     
     /**
+     * Setter for G child
      * @param inG
      */
     public void setG(DNATreeNode inG) {
@@ -145,6 +150,7 @@ public class InternalNode implements DNATreeNode {
     }
     
     /**
+     * Setter for C child
      * @param inC
      */
     public void setC(DNATreeNode inC) {
@@ -152,6 +158,7 @@ public class InternalNode implements DNATreeNode {
     }
     
     /**
+     * Setter for T child
      * @param inT
      */
     public void setT(DNATreeNode inT) {
@@ -159,6 +166,7 @@ public class InternalNode implements DNATreeNode {
     }
 
     /**
+     * Setter for $ child
      * @param in$
      */
     public void set$(DNATreeNode in$) {

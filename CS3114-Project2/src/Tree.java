@@ -57,10 +57,12 @@ public class Tree<N> {
     
     /**
      * Prints out the sequences in the tree in pre order
+     * @param len boolean whether or not to print length
+     * @param stat boolean whether or not to print stats
      */
-    public void print() {
+    public void print(boolean len, boolean stat) {
         if (root == null) return;
-        root.print();
+        root.print(len, stat);
     }
     
     /**
