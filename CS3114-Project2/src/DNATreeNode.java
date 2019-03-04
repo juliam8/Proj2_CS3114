@@ -30,9 +30,13 @@ public interface DNATreeNode {
     DNATreeNode insert(char[] sequence, int level);
     
     /**
-     * Returns true because this is a flyweight node
      * @param len boolean whether or not to print length
      * @param stat boolean whether or not to print stats
      */
     void print(boolean len, boolean stat);
+    
+    /**
+     * @param sequence the sequence to find and print
+     */
+    void search(char[] sequence);
 }

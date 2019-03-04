@@ -73,8 +73,10 @@ public class Tree<N> {
      * @return returns true if found
      */
     public boolean search(char[] sequence) {
+        if (root == null) return false;
+        root.search(sequence);
                
-        return false;
+        return true;
     }
 
     /**
