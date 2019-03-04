@@ -62,7 +62,7 @@ public class Tree<N> {
      */
     public void print() {
         if (root == null) return;
-        root.print(root);
+        root.print();
     }
     
     /**
