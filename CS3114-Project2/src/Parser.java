@@ -103,7 +103,10 @@ public class Parser {
             System.out.println(" already exists");
         } 
        else {
-            mTree.insert(sequence);
+           System.out.print("sequence ");
+           System.out.print(sequence);
+           System.out.println(" inserted at level ");
+           mTree.insert(sequence);
         }
     }
 

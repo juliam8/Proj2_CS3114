@@ -22,6 +22,12 @@ public class FlyweightNode implements DNATreeNode {
      * @return the new node 
      */
     public DNATreeNode insert(char[] sequence, int level) {
+        //System.out.println(level - 1);
+        if(level - 1 == sequence.length) {
+            InternalNode n = new InternalNode();
+            n.insert(sequence, level);
+            return n;
+        }
         return new LeafNode(sequence);
     }
     
