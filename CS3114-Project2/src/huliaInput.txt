@@ -7,3 +7,4 @@ insert A
 insert GCC
 print
 search GC
+search GCA$

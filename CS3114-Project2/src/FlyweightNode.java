@@ -48,6 +48,14 @@ public class FlyweightNode implements DNATreeNode {
     }
     
     /**
+     * Finds an exact sequence
+     * @param sequence the DNA sequence to find
+     */
+    public boolean search(char[] sequence, int level) {
+        return false;        
+    }
+    
+    /**
      * Get the flyweight node pointer
      * @return the flyweight node
      */

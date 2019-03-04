@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * @author juliam8
@@ -40,7 +41,14 @@ public interface DNATreeNode {
     
     /**
      * @param sequence the sequence to find and print
+     * @return the string of sequences to print
+     */
+    ArrayList<String> search(char[] sequence, int level, boolean check);
+    
+    /**
+     * Checks if a specific sequence exists
+     * @param sequence the sequence to find and print
      * @return 
      */
-    boolean search(char[] sequence, int level, boolean check);
+    boolean search(char[] sequence, int level);
 }
