@@ -1,0 +1,3 @@
+insert A
+insert G
+print

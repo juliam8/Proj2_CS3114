@@ -83,6 +83,12 @@ public class LeafNode implements DNATreeNode{
      * @param sequence the DNA sequence to find
      */
     public void search(char[] sequence, int level) {
+        int index = sequence.length;
+        if (Arrays.equals(sequence, DNASequence[0:index])) {
+            
+        }
+        
+        
         // TODO Auto-generated method stub
         
     }
