@@ -1,0 +1,9 @@
+insert A
+insert GC
+insert GCC
+insert GGT
+insert GCA
+insert A
+insert GCC
+print
+search GC

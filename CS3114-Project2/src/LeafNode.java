@@ -81,19 +81,20 @@ public class LeafNode implements DNATreeNode{
     /**
      * Finds a sequence
      * @param sequence the DNA sequence to find
+     * @return true if found
      */
-    public void search(char[] sequence, int level) {
+    public boolean search(char[] sequence, int level, boolean check) {
         int index = sequence.length;
         char [] subArray;
         subArray = Arrays.copyOfRange(DNASequence, 0, index);
         if (Arrays.equals(sequence, subArray)) {
-            System.out.print("sequence: ");
-            System.out.println(DNASequence.toString());
+            if (!check) {
+                System.out.print("sequence: ");
+                System.out.println(DNASequence);
+            }
+            return true;
         }
-        
-        
-        // TODO Auto-generated method stub
-        
+        return false;
     }
     
     /**

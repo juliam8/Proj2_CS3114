@@ -40,6 +40,7 @@ public interface DNATreeNode {
     
     /**
      * @param sequence the sequence to find and print
+     * @return 
      */
-    void search(char[] sequence, int level);
+    boolean search(char[] sequence, int level, boolean check);
 }

@@ -50,7 +50,7 @@ public class Parser {
                 remove();
             } 
             else if (command.equals("search")) {
-                mTree.search(mScan.next().toCharArray());
+                mTree.search(mScan.next().toCharArray(), false);
             } 
             else if (command.equals("print")) {
                 print();
@@ -94,12 +94,14 @@ public class Parser {
         //newNode = new LeafNode(sequence);
         
         if (!validSequence(sequence)) {
-            System.out.println("sequence rejected: " + seq);
+            System.out.print("sequence rejected: ");
+            System.out.print(sequence);
         }
-        /*else if (mTree.search(sequence)) {
-            System.out.println("sequence " + seq);
+        else if (mTree.search(sequence, true)) {
+            System.out.print("sequence ");
+            System.out.print(sequence);
             System.out.println(" already exists");
-        }*/ 
+        } 
        else {
             mTree.insert(sequence);
         }

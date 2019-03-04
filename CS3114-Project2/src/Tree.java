@@ -70,11 +70,10 @@ public class Tree<N> {
      * @param sequence the sequence to find within the tree
      * @return returns true if found
      */
-    public boolean search(char[] sequence) {
+    public boolean search(char[] sequence, boolean check) {
         if (root == null) return false;
-        root.search(sequence, 1);
+        return root.search(sequence, 0, check);
                
-        return true;
     }
 
     /**
