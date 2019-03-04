@@ -1,13 +1,8 @@
 insert ACGT
 insert AAAA
-<<<<<<< HEAD
 insert AA
 insert AAACCCCGGTGAAAACGTA
 insert ACTGGGAA
 print
 remove ACGT
 print
-=======
-insert ACTG
-print stats
->>>>>>> 1fabc05a9f6bc7f3f4f7e9d900b72c024ff3a4a1
