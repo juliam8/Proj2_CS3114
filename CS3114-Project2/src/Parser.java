@@ -96,11 +96,11 @@ public class Parser {
         if (!validSequence(sequence)) {
             System.out.println("sequence rejected: " + seq);
         }
-        else if (mTree.search(sequence)) {
+        /*else if (mTree.search(sequence)) {
             System.out.println("sequence " + seq);
             System.out.println(" already exists");
-        } 
-        else {
+        }*/ 
+       else {
             mTree.insert(sequence);
         }
     }
