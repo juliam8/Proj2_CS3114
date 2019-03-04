@@ -101,6 +101,15 @@ public class InternalNode implements DNATreeNode {
     }
     
     /**
+     * Finds a sequence
+     * @param sequence the DNA sequence to find
+     */
+    public void search(char[] sequence) {
+        // TODO Auto-generated method stub
+        
+    }
+    
+    /**
      * Prints out an Internal Node key
      * @param len boolean whether or not to print length
      * @param stat boolean whether or not to print stats
@@ -255,4 +264,5 @@ public class InternalNode implements DNATreeNode {
      * Stores the $ branch of the node
      */
     private DNATreeNode $;
+
 }

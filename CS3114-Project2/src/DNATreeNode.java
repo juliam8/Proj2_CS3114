@@ -36,4 +36,9 @@ public interface DNATreeNode {
      * @param stat boolean whether or not to print stats
      */
     void print(boolean len, boolean stat);
+    
+    /**
+     * @param sequence the sequence to find and print
+     */
+    void search(char[] sequence);
 }
