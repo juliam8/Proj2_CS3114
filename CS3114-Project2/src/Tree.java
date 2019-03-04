@@ -42,7 +42,7 @@ public class Tree<N> {
      * @return the level at which the node is inserted
      */
     public void insert(char[] sequence) {
-        root = root.insert(sequence, sequence);
+        root = root.insert(sequence, 0);
         nodeCount++;
     }
     

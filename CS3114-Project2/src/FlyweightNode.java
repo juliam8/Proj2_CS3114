@@ -20,7 +20,7 @@ public class FlyweightNode implements DNATreeNode {
      * @param sequence
      * @return the new node 
      */
-    public DNATreeNode insert(char[] sequence, char[] modSeq) {
+    public DNATreeNode insert(char[] sequence, int level) {
         return new LeafNode(sequence);
     }
     
