@@ -29,10 +29,10 @@ public class LeafNode implements DNATreeNode{
                 }
             }
         }
-        percentA = count[0] / length;
-        percentC = count[1] / length;
-        percentG = count[2] / length;
-        percentT = count[3] / length;
+        percentA = (count[0]*100 / length);
+        percentC = (count[1]*100 / length);
+        percentG = (count[2]*100 / length);
+        percentT = (count[3]*100 / length);
     }
     
     /**
@@ -48,10 +48,25 @@ public class LeafNode implements DNATreeNode{
     
     /**
      * Prints out an Leaf Node key
-     * @param node
+     * @param len boolean whether or not to print length
+     * @param stat boolean whether or not to print stats
      */
-    public void print() {
-        System.out.println(DNASequence);
+    public void print(boolean len, boolean stat) {
+        System.out.print(DNASequence);
+        if (len) {
+            System.out.print(" " + length);
+        }
+        else if (stat) {
+            String statA = String.format("%.2f", percentA);
+            String statC = String.format("%.2f", percentC);
+            String statG = String.format("%.2f", percentG);
+            String statT = String.format("%.2f", percentT);
+            System.out.print(" A:" + statA);
+            System.out.print(" C:" + statC);
+            System.out.print(" G:" + statG);
+            System.out.print(" T:" + statT);
+        }
+        System.out.print("\n");
     }
     
     /**
@@ -123,7 +138,7 @@ public class LeafNode implements DNATreeNode{
      */
     private char[] DNASequence;
     
-    private double length;
+    private int length;
     private double percentA;
     private double percentC;
     private double percentG;

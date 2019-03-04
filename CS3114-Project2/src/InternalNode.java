@@ -67,34 +67,35 @@ public class InternalNode implements DNATreeNode {
     
     /**
      * Prints out an Internal Node key
-     * @param node
+     * @param len boolean whether or not to print length
+     * @param stat boolean whether or not to print stats
      */
-    public void print() {
+    public void print(boolean len, boolean stat) {
         System.out.println("I");
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
-        a.print();
+        a.print(len, stat);
         
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
-        c.print();
+        c.print(len, stat);
         
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
-        g.print();
+        g.print(len, stat);
         
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
-        t.print();
+        t.print(len, stat);
         
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
-        $.print();
+        $.print(len, stat);
     }
     
     /**

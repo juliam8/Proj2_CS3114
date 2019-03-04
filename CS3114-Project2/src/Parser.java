@@ -53,7 +53,7 @@ public class Parser {
                 mTree.search(mScan.next().toCharArray());
             } 
             else if (command.equals("print")) {
-                mTree.print();
+                print();
             }
         }
         mScan.close();
@@ -124,6 +124,24 @@ public class Parser {
             System.out.print("sequence " + sequence.toString() );
             System.out.print(" removed");
         }*/
+    }
+    
+    private void print() {
+        if (mScan.hasNext()) {
+            String next = mScan.next();
+            if (next.contentEquals("lengths")) {
+                mTree.print(true, false);
+            }
+            else if (next.contentEquals("stats")) {
+                mTree.print(false, true);
+            }
+            else {
+                mTree.print(false, false);
+            }
+        }
+        else {
+            mTree.print(false, false);
+        }        
     }
 
     /**
