@@ -60,9 +60,9 @@ public class Tree<N> {
     /**
      * Prints out the sequences in the tree in pre order
      */
-    public void print() {
+    public void print(int level) {
         if (root == null) return;
-        root.print();
+        root.print(level);
     }
     
     /**

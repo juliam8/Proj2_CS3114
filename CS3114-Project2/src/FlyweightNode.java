@@ -28,7 +28,7 @@ public class FlyweightNode implements DNATreeNode {
      * Prints out an empty key
      * @param root
      */
-    public void print() {
+    public void print(int level) {
         System.out.println("E");
     }
     

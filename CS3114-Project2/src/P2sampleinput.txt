@@ -1,4 +1,3 @@
 insert A
-insert AT
-insert AA
+insert C
 print
