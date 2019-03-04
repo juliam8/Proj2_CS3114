@@ -81,7 +81,7 @@ public class LeafNode implements DNATreeNode{
     /**
      * Finds a sequence
      * @param sequence the DNA sequence to find
-     */
+     
     public void search(char[] sequence, int level) {
         int index = sequence.length;
         if (Arrays.equals(sequence, DNASequence[0:index])) {
@@ -91,7 +91,7 @@ public class LeafNode implements DNATreeNode{
         
         // TODO Auto-generated method stub
         
-    }
+    }*/
     
     /**
      * Sets the DNA sequence to a new value

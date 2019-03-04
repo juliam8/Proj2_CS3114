@@ -41,10 +41,10 @@ public class FlyweightNode implements DNATreeNode {
     /**
      * Finds a sequence
      * @param sequence the DNA sequence to find
-     */
+     
     public void search(char[] sequence, int level) {
         return;        
-    }
+    }*/
     
     /**
      * Get the flyweight node pointer

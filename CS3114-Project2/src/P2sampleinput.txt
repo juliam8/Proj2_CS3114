@@ -1,4 +1,8 @@
+insert ACGT
+insert AAAA
 insert AA
+insert AAACCCCGGTGAAAACGTA
+insert ACTGGGAA
 print
-remove AA
+remove ACGT
 print
