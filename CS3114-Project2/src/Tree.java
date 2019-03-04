@@ -74,7 +74,7 @@ public class Tree<N> {
      */
     public boolean search(char[] sequence) {
         if (root == null) return false;
-        root.search(sequence);
+        root.search(sequence, 1);
                
         return true;
     }

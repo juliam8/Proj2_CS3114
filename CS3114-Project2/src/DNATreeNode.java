@@ -38,5 +38,5 @@ public interface DNATreeNode {
     /**
      * @param sequence the sequence to find and print
      */
-    void search(char[] sequence);
+    void search(char[] sequence, int level);
 }
