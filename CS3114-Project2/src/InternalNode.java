@@ -69,33 +69,55 @@ public class InternalNode implements DNATreeNode {
     public DNATreeNode remove(char[] sequence, int level) {
         if (level-1 == sequence.length) {
             set$($.remove(sequence, level));
-            if(a.isFlyweight() && c.isFlyweight() &&
-               g.isFlyweight() && t.isFlyweight())
-                return $;
         }
         else if (sequence[level-1] == 'A') {
             setA(a.remove(sequence, level + 1));
-            if($.isFlyweight() && c.isFlyweight() &&
-               g.isFlyweight() && t.isFlyweight())
-                return a;
         }
         else if (sequence[level-1] == 'C') {
             setC(c.remove(sequence, level + 1));
-            if(a.isFlyweight() && $.isFlyweight() &&
-               g.isFlyweight() && t.isFlyweight())
-                return c;
         }
         else if (sequence[level-1] == 'G') {
             setG(g.remove(sequence, level + 1));
-            if(a.isFlyweight() && c.isFlyweight() &&
-               $.isFlyweight() && t.isFlyweight())
-                return g;
         }
         else if (sequence[level-1] == 'T') {
             setT(t.remove(sequence, level + 1));
-            if(a.isFlyweight() && c.isFlyweight() &&
-               g.isFlyweight() && $.isFlyweight())
-               return t;
+        }
+        if(level != 1)
+            return shrinkCheck();
+        else
+            return this;
+    }
+    
+    private DNATreeNode shrinkCheck() {
+        if (!a.isFlyweight()) {
+            if (g.isFlyweight() && c.isFlyweight() &&
+               t.isFlyweight() && $.isFlyweight()) {
+                return a;
+            }
+        }
+        else if (!g.isFlyweight()) {
+            if (c.isFlyweight() && t.isFlyweight() &&
+                $.isFlyweight()) {
+                return c;
+            }
+        }
+        else if (!c.isFlyweight()) {
+            if (t.isFlyweight() && $.isFlyweight()) {
+                return c;
+            }
+        }
+        else if (!t.isFlyweight()) {
+            if($.isFlyweight()) {
+                return t;
+            }
+        }
+        else {
+            if ($.isFlyweight()) {
+                return new FlyweightNode();
+            }
+            else {
+                return $;
+            }
         }
         return this;
     }
@@ -136,7 +158,7 @@ public class InternalNode implements DNATreeNode {
         }
         return false;
     }
-    
+
     /**
      * Prints out an Internal Node key
      * @param len boolean whether or not to print length
