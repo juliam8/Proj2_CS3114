@@ -50,7 +50,7 @@ public class LeafNode implements DNATreeNode{
      * Prints out an Leaf Node key
      * @param node
      */
-    public void print() {
+    public void print(int level) {
         System.out.println(DNASequence);
     }
     

@@ -45,6 +45,7 @@ public class InternalNode implements DNATreeNode {
      * @return DNATreeNode 
      */
     public DNATreeNode insert(char[] sequence, int level) {
+        nodeLevel = level;
         if (level == sequence.length) {
             LeafNode n = new LeafNode(sequence);
             set$(n);
@@ -68,18 +69,25 @@ public class InternalNode implements DNATreeNode {
      * Prints out an Internal Node key
      * @param node
      */
-    public void print() {
+    public void print(int level) {
+        for (int i=0; i<nodeLevel; i++)
+            System.out.print("  ");
         System.out.println("I");
-        System.out.print("  ");
-        a.print();
-        System.out.print("  ");
-        c.print();
-        System.out.print("  ");
-        g.print();
-        System.out.print("  ");
-        t.print();
-        System.out.print("  ");
-        $.print();
+        for (int i=0; i<nodeLevel; i++)
+            System.out.print("  ");
+        a.print(level);
+        for (int i=0; i<nodeLevel; i++)
+            System.out.print("  ");
+        c.print(level);
+        for (int i=0; i<nodeLevel; i++)
+            System.out.print("  ");
+        g.print(level);
+        for (int i=0; i<nodeLevel; i++)
+            System.out.print("  ");
+        t.print(level);
+        for (int i=0; i<nodeLevel; i++)
+            System.out.print("  ");
+        $.print(level);
     }
     
     /**
@@ -173,6 +181,11 @@ public class InternalNode implements DNATreeNode {
     public boolean isFlyweight() {
         return false;
     }
+    
+    /**
+     * Stores the level of the node
+     */
+    private int nodeLevel;
     
     /**
      * Stores the a branch of the node
