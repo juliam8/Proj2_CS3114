@@ -1,4 +1,3 @@
-insert A
-insert AA
-insert G
+insert AAAA
+insert ACGT
 print

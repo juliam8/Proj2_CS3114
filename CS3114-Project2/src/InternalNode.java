@@ -70,10 +70,15 @@ public class InternalNode implements DNATreeNode {
      */
     public void print() {
         System.out.println("I");
+        System.out.print("  ");
         a.print();
+        System.out.print("  ");
         c.print();
+        System.out.print("  ");
         g.print();
+        System.out.print("  ");
         t.print();
+        System.out.print("  ");
         $.print();
     }
     
