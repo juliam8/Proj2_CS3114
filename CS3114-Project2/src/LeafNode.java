@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 /**
  * @author juliam8
@@ -44,6 +45,13 @@ public class LeafNode implements DNATreeNode{
         n.insert(DNASequence, level);
         n.insert(sequence, level);
         return n;
+    }
+    
+    public DNATreeNode remove(char[] sequence, int level) {
+        if(Arrays.equals(sequence, DNASequence)) {
+            return new FlyweightNode();
+        }
+        else return this;
     }
     
     /**

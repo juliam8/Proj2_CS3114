@@ -49,13 +49,11 @@ public class Tree<N> {
     /**
      * @param sequence
      * @return
-     
-    public DNATreeNode remove(char[] sequence) {
-        root.remove(sequence);
-        
-        // TODO Auto-generated method stub
-        return null;
-    }*/
+     */
+    public void remove(char[] sequence) {
+        root = root.remove(sequence, 1);
+        nodeCount--;
+    }
     
     /**
      * Prints out the sequences in the tree in pre order
