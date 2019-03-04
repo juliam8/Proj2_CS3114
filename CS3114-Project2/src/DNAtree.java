@@ -46,8 +46,7 @@ public class DNAtree {
    */
   public static void main(String[] args) throws FileNotFoundException{
       
-          // myTree is the DNA tree used 
-          // to store ACGT nodes
+          // myTree is the DNA tree used DNA sequence nodes
           Tree<DNATreeNode> myTree;
           myTree = new Tree<DNATreeNode>();
           
@@ -56,6 +55,4 @@ public class DNAtree {
           Parser parse = new Parser(new File(args[0]), myTree);
           parse.execute();
       }
-      // TODO Auto-generated method stub
-
   }

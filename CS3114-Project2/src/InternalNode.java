@@ -44,26 +44,22 @@ public class InternalNode implements DNATreeNode {
      * @param sequence
      * @return DNATreeNode 
      */
-    public DNATreeNode insert(char[] sequence, char[] modSeq) {
-        if (modSeq.length == 0) {
+    public DNATreeNode insert(char[] sequence, int level) {
+        if (level == sequence.length) {
             LeafNode n = new LeafNode(sequence);
             set$(n);
         }
-        else if (modSeq[0] == 'A') {
-            modSeq = Arrays.copyOfRange(modSeq, 1, modSeq.length);
-            setA(a.insert(sequence, modSeq));
+        else if (sequence[level] == 'A') {
+            setA(a.insert(sequence, level + 1));
         }
-        else if (modSeq[0] == 'C') {
-            modSeq = Arrays.copyOfRange(modSeq, 1, modSeq.length);
-            setC(c.insert(sequence, modSeq));
+        else if (sequence[level] == 'C') {
+            setC(c.insert(sequence, level + 1));
         }
-        else if (modSeq[0] == 'G') {
-            modSeq = Arrays.copyOfRange(modSeq, 1, modSeq.length);
-            setG(g.insert(sequence, modSeq));
+        else if (sequence[level] == 'G') {
+            setG(g.insert(sequence, level + 1));
         }
-        else if (modSeq[0] == 'T') {
-            modSeq = Arrays.copyOfRange(modSeq, 1, modSeq.length);
-            setT(t.insert(sequence, modSeq));
+        else if (sequence[level] == 'T') {
+            setT(t.insert(sequence, level + 1));
         }
         return this;
     }

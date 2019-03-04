@@ -1,0 +1,4 @@
+insert A
+insert AT
+insert AA
+print
