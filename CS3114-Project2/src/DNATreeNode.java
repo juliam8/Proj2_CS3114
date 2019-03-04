@@ -28,6 +28,7 @@ public interface DNATreeNode {
      * @return DNATreeNode the node that was inserted
      */
     DNATreeNode insert(char[] sequence, int level);
+    
     DNATreeNode remove(char[] sequence, int level);
     
     /**

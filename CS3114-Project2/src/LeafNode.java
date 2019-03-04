@@ -82,7 +82,7 @@ public class LeafNode implements DNATreeNode{
      * Finds a sequence
      * @param sequence the DNA sequence to find
      */
-    public void search(char[] sequence) {
+    public void search(char[] sequence, int level) {
         // TODO Auto-generated method stub
         
     }
