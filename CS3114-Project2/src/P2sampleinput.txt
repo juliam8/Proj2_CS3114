@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 insert ACGT
 insert AAAA
 insert AA

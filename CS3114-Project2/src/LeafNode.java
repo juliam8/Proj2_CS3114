@@ -84,8 +84,11 @@ public class LeafNode implements DNATreeNode{
      
     public void search(char[] sequence, int level) {
         int index = sequence.length;
-        if (Arrays.equals(sequence, DNASequence[0:index])) {
-            
+        char [] subArray;
+        subArray = Arrays.copyOfRange(DNASequence, 0, index);
+        if (Arrays.equals(sequence, subArray)) {
+            System.out.print("sequence: ");
+            System.out.println(DNASequence.toString());
         }
         
         
