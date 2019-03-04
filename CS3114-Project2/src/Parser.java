@@ -115,7 +115,7 @@ public class Parser {
         // data is an array that holds the rectangle coordinates
         char[] sequence = dna.toCharArray();
        // DNATreeNode temp = null;// = mTree.remove(sequence);
-        
+        mTree.remove(sequence);
        /* if (sequence == null) {
             System.out.print("sequence " + sequence.toString() );
             System.out.print(" does not exist");

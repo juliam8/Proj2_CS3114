@@ -25,6 +25,10 @@ public class FlyweightNode implements DNATreeNode {
         return new LeafNode(sequence);
     }
     
+    public DNATreeNode remove(char[] sequence, int level) {
+        return this;
+    }
+    
     /**
      * Prints out an empty key
      * @param len boolean whether or not to print length
