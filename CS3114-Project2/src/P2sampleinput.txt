@@ -1,3 +1,0 @@
-insert AAAA
-insert ACTG
-print stats
