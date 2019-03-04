@@ -104,9 +104,23 @@ public class InternalNode implements DNATreeNode {
      * Finds a sequence
      * @param sequence the DNA sequence to find
      */
-    public void search(char[] sequence) {
-        // TODO Auto-generated method stub
-        
+    public void search(char[] sequence, int level) {
+        //if (level-1 == sequence.length) {
+        //    LeafNode n = new LeafNode(sequence);
+        //    search(n, level + 1);
+        //}
+        if (sequence[level-1] == 'A') {
+            search(sequence, level + 1);
+        }
+        else if (sequence[level-1] == 'C') {
+            search(sequence, level + 1);
+        }
+        else if (sequence[level-1] == 'G') {
+            search(sequence, level + 1);
+        }
+        else if (sequence[level-1] == 'T') {
+            search(sequence, level + 1);
+        }
     }
     
     /**
