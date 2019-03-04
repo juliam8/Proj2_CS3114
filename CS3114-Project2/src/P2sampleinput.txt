@@ -1,3 +1,4 @@
 insert A
+insert AA
 insert G
 print
