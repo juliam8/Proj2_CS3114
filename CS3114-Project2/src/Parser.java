@@ -126,6 +126,9 @@ public class Parser {
         }*/
     }
     
+    /**
+     * Print the nodes within the DNA tree
+     */
     private void print() {
         if (mScan.hasNext()) {
             String next = mScan.next();

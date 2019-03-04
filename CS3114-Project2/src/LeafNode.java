@@ -36,8 +36,9 @@ public class LeafNode implements DNATreeNode{
     }
     
     /**
-     * @param sequence
-     * @return
+     * @param sequence the DNA sequence to insert
+     * @param level the level at which to insert
+     * @return the node that was inserted
      */
     public DNATreeNode insert(char[] sequence, int level) {
         InternalNode n = new InternalNode();
