@@ -28,8 +28,10 @@ public interface DNATreeNode {
      * @return DNATreeNode the node that was inserted
      */
     DNATreeNode insert(char[] sequence, int level);
+    DNATreeNode remove(char[] sequence, int level);
     
     /**
+     * Prints the node tree path
      * @param len boolean whether or not to print length
      * @param stat boolean whether or not to print stats
      */

@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 /**
  * @author juliam8
@@ -63,6 +62,40 @@ public class InternalNode implements DNATreeNode {
         }
         else if (sequence[level-1] == 'T') {
             setT(t.insert(sequence, level + 1));
+        }
+        return this;
+    }
+    
+    public DNATreeNode remove(char[] sequence, int level) {
+        if (level-1 == sequence.length) {
+            set$($.remove(sequence, level));
+            if(a.isFlyweight() && c.isFlyweight() &&
+               g.isFlyweight() && t.isFlyweight())
+                return $;
+        }
+        else if (sequence[level-1] == 'A') {
+            setA(a.remove(sequence, level + 1));
+            if($.isFlyweight() && c.isFlyweight() &&
+               g.isFlyweight() && t.isFlyweight())
+                return a;
+        }
+        else if (sequence[level-1] == 'C') {
+            setC(c.remove(sequence, level + 1));
+            if(a.isFlyweight() && $.isFlyweight() &&
+               g.isFlyweight() && t.isFlyweight())
+                return c;
+        }
+        else if (sequence[level-1] == 'G') {
+            setG(g.remove(sequence, level + 1));
+            if(a.isFlyweight() && c.isFlyweight() &&
+               $.isFlyweight() && t.isFlyweight())
+                return g;
+        }
+        else if (sequence[level-1] == 'T') {
+            setT(t.remove(sequence, level + 1));
+            if(a.isFlyweight() && c.isFlyweight() &&
+               g.isFlyweight() && $.isFlyweight())
+               return t;
         }
         return this;
     }
