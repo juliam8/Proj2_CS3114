@@ -36,10 +36,11 @@ public class LeafNode implements DNATreeNode{
                 }
             }
         }
-        percentA = (count[0]*100 / length);
-        percentC = (count[1]*100 / length);
-        percentG = (count[2]*100 / length);
-        percentT = (count[3]*100 / length);
+        double newLength = (double) length;
+        percentA = (count[0]*100 / newLength);
+        percentC = (count[1]*100 / newLength);
+        percentG = (count[2]*100 / newLength);
+        percentT = (count[3]*100 / newLength);
     }
     
     /**
@@ -202,7 +203,7 @@ public class LeafNode implements DNATreeNode{
      */
     private char[] DNASequence;
     
-    private double length;
+    private int length;
     private double percentA;
     private double percentC;
     private double percentG;
