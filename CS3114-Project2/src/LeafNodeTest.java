@@ -63,6 +63,37 @@ public class LeafNodeTest {
         assertTrue(n.isLeaf());
     }
 
+    /**
+     * Test method for {@link LeafNode#search(char[], int, SequenceSearch)}.
+     */
+    @Test
+    public void testSearchCharArrayIntSequenceSearch() {
+        DNATreeNode n = new InternalNode();
+        char[] seq1 = new char[]{'A', 'A', 'C', 'T'};
+        n.insert(seq1, 1, true);
+        char[] seq2 = new char[]{'C', 'A', 'C', 'T'};
+        n.insert(seq2, 1, true);
+        char[] seq3 = new char[]{'G', 'G', 'C'};
+        n.insert(seq3, 1, true);
+        char[] seq4 = new char[]{'T', 'G', 'C'};
+        n.insert(seq4, 1, true);
+        
+        SequenceSearch curSearch = new SequenceSearch();
+        curSearch.sequenceFound = false;
+        curSearch.exactMatch = true;
+        
+        ((LeafNode) ((InternalNode) n).g()).search(seq3, 1, curSearch);
+        assertEquals(curSearch.sequenceFound, true);
+        
+        SequenceSearch curSearch2 = new SequenceSearch();
+        curSearch2.sequenceFound = false;
+        curSearch2.exactMatch = true;
+        
+        char[] badSeq = new char[]{'T', 'A', 'A'};
+        ((InternalNode) n).a().search(badSeq, 1, curSearch2);
+        assertEquals(curSearch2.sequenceFound, false);
+    }
+
 
     /**
      * Test method for {@link LeafNode#setDNA(char[])}.
