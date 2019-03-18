@@ -17,7 +17,9 @@ public class LeafNodeTest {
      */
     @Test
     public void testLeafNode() {
-        fail("Not yet implemented");
+        char[] seq = {'A', 'A'};
+        LeafNode n = new LeafNode(seq);
+        assertTrue(n.isLeaf());
     }
 
     /**
