@@ -190,7 +190,7 @@ public class LeafNode implements DNATreeNode{
      */
     private char[] DNASequence;
     
-    private int length;
+    private double length;
     private double percentA;
     private double percentC;
     private double percentG;

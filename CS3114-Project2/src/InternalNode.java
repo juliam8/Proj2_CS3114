@@ -127,45 +127,27 @@ public class InternalNode implements DNATreeNode {
      * @param sequence the DNA sequence to find
      */
     public void search(char[] sequence, int level, SequenceSearch curSearch) {
+        curSearch.incrementNumOfNodesVisited();
         if (level < sequence.length) {
             if (sequence[level] == 'A') {
-                curSearch.incrementNumOfNodesVisited();
                 a.search(sequence, level + 1, curSearch);
             }
             else if (sequence[level] == 'C') {
-                curSearch.incrementNumOfNodesVisited();
                 c.search(sequence, level + 1, curSearch);
             }
             else if (sequence[level] == 'G') {
-                curSearch.incrementNumOfNodesVisited();
                 g.search(sequence, level + 1, curSearch);
             }
             else if (sequence[level] == 'T') {
-                curSearch.incrementNumOfNodesVisited();
                 t.search(sequence, level + 1, curSearch);
             }
         }
         else if (level == sequence.length) {
-            if (sequence[level-1] == 'A') {
-                curSearch.incrementNumOfNodesVisited();
-                a.search(sequence, level, curSearch);
-            }
-            else if (sequence[level-1] == 'C') {
-                curSearch.incrementNumOfNodesVisited();
-                c.search(sequence, level, curSearch);
-            }
-            else if (sequence[level-1] == 'G') {
-                curSearch.incrementNumOfNodesVisited();
-                g.search(sequence, level, curSearch);
-            }
-            else if (sequence[level-1] == 'T') {
-                curSearch.incrementNumOfNodesVisited();
-                t.search(sequence, level, curSearch);
-            }
-            else if (sequence[level-1] == '$') {
-                curSearch.incrementNumOfNodesVisited();
-                $.search(sequence, level, curSearch);
-            }
+            a.search(sequence, level, curSearch);
+            c.search(sequence, level, curSearch);
+            g.search(sequence, level, curSearch);
+            t.search(sequence, level, curSearch);
+            $.search(sequence, level, curSearch);
         }
     }
 

@@ -20,4 +20,3 @@ insert ACTTA
  print lengths
  print stats
  
-                         search     AA
