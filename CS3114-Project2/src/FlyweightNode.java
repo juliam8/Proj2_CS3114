@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * @author juliam8
  * @author abbym1
@@ -43,17 +45,11 @@ public class FlyweightNode implements DNATreeNode {
      * Finds a sequence
      * @param sequence the DNA sequence to find
      */
-    public boolean search(char[] sequence, int level, boolean check) {
-        return false;        
+    public void search(char[] sequence, int level, SequenceSearch curSearch) {
+        curSearch.incrementNumOfNodesVisited();
+        return;        
     }
     
-    /**
-     * Finds an exact sequence
-     * @param sequence the DNA sequence to find
-     */
-    public boolean search(char[] sequence, int level) {
-        return false;        
-    }
     
     /**
      * Get the flyweight node pointer

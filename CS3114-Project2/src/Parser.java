@@ -50,7 +50,8 @@ public class Parser {
                 remove();
             } 
             else if (command.equals("search")) {
-                mTree.search(mScan.next().toCharArray(), false);
+                char[] sequence = mScan.next().toCharArray();
+                search(sequence, false);
             } 
             else if (command.equals("print")) {
                 print();
@@ -97,7 +98,7 @@ public class Parser {
             System.out.print("sequence rejected: ");
             System.out.print(sequence);
         }
-        else if (mTree.search(sequence, true)) {
+        else if (search(sequence, true)) {
             System.out.print("sequence ");
             System.out.print(sequence);
             System.out.println(" already exists");
@@ -135,8 +136,8 @@ public class Parser {
      * Print the nodes within the DNA tree
      */
     private void print() {
-        //print
-        //remove a
+        System.out.println("tree dump:");
+        
         if (mScan.hasNext("lengths")) {
             mScan.next();
             mTree.print(true, false);
@@ -148,6 +149,30 @@ public class Parser {
         else {
             mTree.print(false, false);
         }
+    }
+    
+    /**
+     * Search for a sequence within tree
+     */
+    private boolean search(char[] sequence, boolean insertCheck) {
+        SequenceSearch curSearch = new SequenceSearch();
+        curSearch.sequenceFound = false;
+        curSearch.exactMatch = false;
+        int lastChar = sequence.length-1;
+        if (sequence[lastChar] == '$' || insertCheck) {
+            curSearch.exactMatch = true;
+        }
+        mTree.search(sequence, curSearch);
+        
+        if (!curSearch.sequenceFound && !insertCheck) {
+            System.out.println("no sequence found");
+            System.out.print("# of nodes visited: ");
+            System.out.println(curSearch.getNumberOfNodesVisited());
+        }
+        if (curSearch.sequenceFound) {
+            return true;
+        }
+        return false;
     }
 
     /**

@@ -126,20 +126,47 @@ public class InternalNode implements DNATreeNode {
      * Finds a sequence
      * @param sequence the DNA sequence to find
      */
-    public boolean search(char[] sequence, int level, boolean check) {
-        //if (level-1 == sequence.length) {
-        //    LeafNode n = new LeafNode(sequence);
-        //    search(n, level + 1);
-        //}
-        return true;
-    }
-    
-    public boolean search(char[] sequence, int level) {
-        return (a.search(sequence, level + 1) |
-                c.search(sequence, level + 1) |
-                g.search(sequence, level + 1) |
-                t.search(sequence, level + 1) |
-                $.search(sequence, level + 1));       
+    public void search(char[] sequence, int level, SequenceSearch curSearch) {
+        if (level < sequence.length) {
+            if (sequence[level] == 'A') {
+                curSearch.incrementNumOfNodesVisited();
+                a.search(sequence, level + 1, curSearch);
+            }
+            else if (sequence[level] == 'C') {
+                curSearch.incrementNumOfNodesVisited();
+                c.search(sequence, level + 1, curSearch);
+            }
+            else if (sequence[level] == 'G') {
+                curSearch.incrementNumOfNodesVisited();
+                g.search(sequence, level + 1, curSearch);
+            }
+            else if (sequence[level] == 'T') {
+                curSearch.incrementNumOfNodesVisited();
+                t.search(sequence, level + 1, curSearch);
+            }
+        }
+        else if (level == sequence.length) {
+            if (sequence[level-1] == 'A') {
+                curSearch.incrementNumOfNodesVisited();
+                a.search(sequence, level, curSearch);
+            }
+            else if (sequence[level-1] == 'C') {
+                curSearch.incrementNumOfNodesVisited();
+                c.search(sequence, level, curSearch);
+            }
+            else if (sequence[level-1] == 'G') {
+                curSearch.incrementNumOfNodesVisited();
+                g.search(sequence, level, curSearch);
+            }
+            else if (sequence[level-1] == 'T') {
+                curSearch.incrementNumOfNodesVisited();
+                t.search(sequence, level, curSearch);
+            }
+            else if (sequence[level-1] == '$') {
+                curSearch.incrementNumOfNodesVisited();
+                $.search(sequence, level, curSearch);
+            }
+        }
     }
 
     /**

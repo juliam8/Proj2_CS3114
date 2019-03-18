@@ -86,27 +86,23 @@ public class LeafNode implements DNATreeNode{
     //if search sequence has $ at the end, then you
     //only check if that EXACT sequence exists.
     //if it doesn't have that $ at the end, print out all.
-    public boolean search(char[] sequence, int level, boolean check) {
-        int index = sequence.length;
-        boolean exactMatch = false;
-        if (sequence[index-1] == '$' || check) {
-            exactMatch = true;
-        }
-        if (!exactMatch) {
+    public void search(char[] sequence, int level, SequenceSearch curSearch) {
+        curSearch.incrementNumOfNodesVisited();
+        
+        if (!curSearch.exactMatch) {
             char [] subArray;
-            subArray = Arrays.copyOfRange(DNASequence, 0, index);
+            subArray = Arrays.copyOfRange(DNASequence, 0, sequence.length);
             if (Arrays.equals(sequence, subArray)) {
                 System.out.print("sequence: ");
                 System.out.println(DNASequence);
-                return true;
+                curSearch.sequenceFound = true;
             }
         }
         else {
             if (Arrays.equals(sequence, DNASequence)) {
-                return true;
+                curSearch.sequenceFound = true;
             }
         }
-        return false;
     }
     
     /**

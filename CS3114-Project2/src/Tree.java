@@ -70,13 +70,8 @@ public class Tree<N> {
      * @param sequence the sequence to find within the tree
      * @return returns true if found
      */
-    public boolean search(char[] sequence, boolean check) {
-        if (root == null) return false;
-        boolean found = root.search(sequence, 0, check);
-       // if (!found) {
-         //   System.out.println("no sequence found");
-        //}
-        return found;
+    public void search(char[] sequence, SequenceSearch curSearch) {
+        root.search(sequence, 0, curSearch);
     }
 
     /**

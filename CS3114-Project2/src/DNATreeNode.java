@@ -41,14 +41,9 @@ public interface DNATreeNode {
     
     /**
      * @param sequence the sequence to find and print
-     * @return the string of sequences to print
+     * @param level
+     * @param curSearch
      */
-    boolean search(char[] sequence, int level, boolean check);
+    void search(char[] sequence, int level, SequenceSearch curSearch);
     
-    /**
-     * Checks if a specific sequence exists
-     * @param sequence the sequence to find and print
-     * @return 
-     */
-    boolean search(char[] sequence, int level);
 }
