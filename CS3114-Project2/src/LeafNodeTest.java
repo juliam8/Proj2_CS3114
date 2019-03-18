@@ -46,17 +46,8 @@ public class LeafNodeTest {
         char[] seq = {'A', 'A'};
         DNATreeNode n = new LeafNode(seq);
         assertTrue(n.isLeaf());
-        
-        char[] seq2 = {'G', 'T'};
-        n = n.insert(seq2, 1, true);
-        
-        assertFalse(n.isLeaf());
-        assertFalse(n.isFlyweight());
-        
-        n = n.remove(seq, 2);
-        assertTrue(n.isLeaf());
-        
-        n = n.remove(seq2, 1);
+                
+        n = n.remove(seq, 1);
         assertTrue(n.isFlyweight());
     }
 
@@ -65,15 +56,11 @@ public class LeafNodeTest {
      */
     @Test
     public void testPrint() {
-        fail("Not yet implemented");
-    }
-
-    /**
-     * Test method for {@link LeafNode#search(char[], int, SequenceSearch)}.
-     */
-    @Test
-    public void testSearchCharArrayIntSequenceSearch() {
-        fail("Not yet implemented");
+        char[] seq = {'A', 'A'};
+        LeafNode n = new LeafNode(seq);
+        assertTrue(n.isLeaf());
+        n.print(false, false);
+        assertTrue(n.isLeaf());
     }
 
 
