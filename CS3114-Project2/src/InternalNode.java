@@ -31,13 +31,13 @@ public class InternalNode implements DNATreeNode {
      * @param inT
      * @param in$
      */
-    InternalNode(DNATreeNode inA, DNATreeNode inC, DNATreeNode inG, DNATreeNode inT, DNATreeNode in$){
+    /*InternalNode(DNATreeNode inA, DNATreeNode inC, DNATreeNode inG, DNATreeNode inT, DNATreeNode in$){
         a = inA;
         c = inC;
         g = inG;
         t = inT;
         $ = in$;
-    }
+    }*/
     
     /**
      * Inserts a node at a certain level

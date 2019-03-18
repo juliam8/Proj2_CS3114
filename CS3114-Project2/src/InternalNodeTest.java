@@ -17,7 +17,12 @@ public class InternalNodeTest {
      */
     @Test
     public void testInternalNode() {
-        DNATreeNode n = new InternalNode();
+        InternalNode n = new InternalNode();
+        assertTrue(n.a().isFlyweight());
+        assertTrue(n.c().isFlyweight());
+        assertTrue(n.g().isFlyweight());
+        assertTrue(n.t().isFlyweight());
+        assertTrue(n.$().isFlyweight());
         assertFalse(n.isFlyweight());
         assertFalse(n.isLeaf());
     }
