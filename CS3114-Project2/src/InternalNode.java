@@ -126,51 +126,42 @@ public class InternalNode implements DNATreeNode {
      * Finds a sequence
      * @param sequence the DNA sequence to find
      */
-    public String search(char[] sequence, int level, boolean check) {
+    public void search(char[] sequence, int level, SequenceSearch curSearch) {
         //if (level-1 == sequence.length) {
         //    LeafNode n = new LeafNode(sequence);
         //    search(n, level + 1);
         //}
         if (level < sequence.length) {
             if (sequence[level] == 'A') {
-                return (a.search(sequence, level + 1, check));
+                a.search(sequence, level + 1, curSearch);
             }
             else if (sequence[level] == 'C') {
-                return c.search(sequence, level + 1, check);
+                c.search(sequence, level + 1, curSearch);
             }
             else if (sequence[level] == 'G') {
-                return g.search(sequence, level + 1, check);
+                g.search(sequence, level + 1, curSearch);
             }
             else if (sequence[level] == 'T') {
-                return t.search(sequence, level + 1, check);
+                t.search(sequence, level + 1, curSearch);
             }
         }
         else if (level == sequence.length) {
             if (sequence[level-1] == 'A') {
-                a.search(sequence, level, check);
+                a.search(sequence, level, curSearch);
             }
             else if (sequence[level-1] == 'C') {
-                c.search(sequence, level, check);
+                c.search(sequence, level, curSearch);
             }
             else if (sequence[level-1] == 'G') {
-                g.search(sequence, level, check);
+                g.search(sequence, level, curSearch);
             }
             else if (sequence[level-1] == 'T') {
-                t.search(sequence, level, check);
+                t.search(sequence, level, curSearch);
             }
             else if (sequence[level-1] == '$') {
-                $.search(sequence, level, check);
+                $.search(sequence, level, curSearch);
             }
         }
-        return "fina";
-    }
-    
-    public boolean search(char[] sequence, int level) {
-        return (a.search(sequence, level + 1) |
-                c.search(sequence, level + 1) |
-                g.search(sequence, level + 1) |
-                t.search(sequence, level + 1) |
-                $.search(sequence, level + 1));       
     }
 
     /**
