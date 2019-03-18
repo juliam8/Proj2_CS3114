@@ -1,10 +1,23 @@
-insert A
-insert GC
-insert GCC
-insert GGT
-insert GCA
-insert A
-insert GCC
-print
-search GC
-search GCA$
+insert ACGT     
+    
+
+
+ insert            AAAA   
+ insert AA
+insert                 AAACCCCGGTGAAAACGTA
+insert       ACTGGGAA          
+
+remove       ACGT         
+
+insert ACCTT
+insert ACTTA
+ 
+ print
+ 
+ insert TATA
+ insert TCG
+ 
+ print lengths
+ print stats
+ 
+                         search     AA
