@@ -17,7 +17,9 @@ public class LeafNodeTest {
      */
     @Test
     public void testLeafNode() {
-        fail("Not yet implemented");
+        char[] seq = {'A', 'A'};
+        LeafNode n = new LeafNode(seq);
+        assertTrue(n.isLeaf());
     }
 
     /**
@@ -25,7 +27,15 @@ public class LeafNodeTest {
      */
     @Test
     public void testInsert() {
-        fail("Not yet implemented");
+        char[] seq = {'A', 'A'};
+        DNATreeNode n = new LeafNode(seq);
+        assertTrue(n.isLeaf());
+        
+        char[] seq2 = {'G', 'T'};
+        n = n.insert(seq2, 1, true);
+        
+        assertFalse(n.isLeaf());
+        assertFalse(n.isFlyweight());
     }
 
     /**
@@ -33,7 +43,21 @@ public class LeafNodeTest {
      */
     @Test
     public void testRemove() {
-        fail("Not yet implemented");
+        char[] seq = {'A', 'A'};
+        DNATreeNode n = new LeafNode(seq);
+        assertTrue(n.isLeaf());
+        
+        char[] seq2 = {'G', 'T'};
+        n = n.insert(seq2, 1, true);
+        
+        assertFalse(n.isLeaf());
+        assertFalse(n.isFlyweight());
+        
+        n = n.remove(seq, 2);
+        assertTrue(n.isLeaf());
+        
+        n = n.remove(seq2, 1);
+        assertTrue(n.isFlyweight());
     }
 
     /**
