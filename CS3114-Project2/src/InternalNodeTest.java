@@ -42,11 +42,11 @@ public class InternalNodeTest {
     public void testInsert() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'A', 'A', 'C', 'T'};
-        n.insert(seq1, 1);
+        n.insert(seq1, 1, true);
         char[] seq2 = new char[]{'C', 'A', 'C', 'T'};
-        n.insert(seq2, 1);
+        n.insert(seq2, 1, true);
         char[] seq3 = new char[]{'G', 'G', 'C'};
-        n.insert(seq3, 1);
+        n.insert(seq3, 1, true);
         
         assertFalse(n.a().isFlyweight());
         assertFalse(n.c().isFlyweight());
@@ -60,9 +60,9 @@ public class InternalNodeTest {
         assertEquals(((LeafNode) ((InternalNode) n).g()).dna(), seq3);
         
         char[] seq4 = new char[]{'C', 'G', 'C'};
-        n.insert(seq4, 1);
+        n.insert(seq4, 1, true);
         char[] seq5 = new char[]{'C', 'T', 'C'};
-        n.insert(seq5, 1);
+        n.insert(seq5, 1, true);
         
         assertFalse(n.c().isLeaf());
         assertTrue(((LeafNode) ((InternalNode) n.c()).a()).isLeaf());
@@ -80,11 +80,11 @@ public class InternalNodeTest {
     public void testRemove() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'A', 'A', 'C', 'T'};
-        n.insert(seq1, 1);
+        n.insert(seq1, 1, true);
         char[] seq2 = new char[]{'C', 'A', 'C', 'T'};
-        n.insert(seq2, 1);
+        n.insert(seq2, 1, true);
         char[] seq3 = new char[]{'G', 'G', 'C'};
-        n.insert(seq3, 1);
+        n.insert(seq3, 1, true);
         
         assertTrue(n.a().isLeaf());
         assertTrue(n.c().isLeaf());
@@ -116,15 +116,15 @@ public class InternalNodeTest {
     public void testSearch() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'A', 'A', 'C', 'T'};
-        n.insert(seq1, 1);
+        n.insert(seq1, 1, true);
         char[] seq2 = new char[]{'C', 'A', 'C', 'T'};
-        n.insert(seq2, 1);
+        n.insert(seq2, 1, true);
         char[] seq3 = new char[]{'G', 'G', 'C'};
-        n.insert(seq3, 1);
+        n.insert(seq3, 1, true);
         char[] seq4 = new char[]{'C', 'G', 'C'};
-        n.insert(seq4, 1);
+        n.insert(seq4, 1, true);
         char[] seq5 = new char[]{'C', 'T', 'C'};
-        n.insert(seq5, 1);
+        n.insert(seq5, 1, true);
         
         SequenceSearch curSearch = new SequenceSearch();
         curSearch.sequenceFound = false;
@@ -143,24 +143,19 @@ public class InternalNodeTest {
     public void testPrint() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'A', 'A', 'C', 'T'};
-        n.insert(seq1, 1);
+        n.insert(seq1, 1, true);
         char[] seq2 = new char[]{'C', 'A', 'C', 'T'};
-        n.insert(seq2, 1);
+        n.insert(seq2, 1, true);
         char[] seq3 = new char[]{'G', 'G', 'C'};
-        n.insert(seq3, 1);
+        n.insert(seq3, 1, true);
         char[] seq4 = new char[]{'C', 'G', 'C'};
-        n.insert(seq4, 1);
-        char[] seq5 = new char[]{'C', 'T', 'C'};
+        n.insert(seq4, 1, true);
         n.print(false, false);
         
-        assertFalse(n.c().isLeaf());
         assertTrue(((LeafNode) ((InternalNode) n.c()).a()).isLeaf());
         assertTrue(((LeafNode) ((InternalNode) n.c()).g()).isLeaf());
         assertEquals(((LeafNode) ((InternalNode) n.c()).a()).dna(), seq2);
         assertEquals(((LeafNode) ((InternalNode) n.c()).g()).dna(), seq4);
-        assertEquals(((LeafNode) ((InternalNode) n.c()).t()).dna(), seq5);   
-        
-
     }
 
     /**
@@ -238,9 +233,9 @@ public class InternalNodeTest {
     public void testSet$() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'T', 'C'};
-        n.insert(seq1, 1);
+        n.insert(seq1, 1, true);
         char[] seq2 = new char[]{'T', 'G'};
-        n.insert(seq2, 1);
+        n.insert(seq2, 1, true);
         
         char[] seq3 = new char[]{'T'};
         DNATreeNode exact = new LeafNode(seq3);
@@ -259,13 +254,13 @@ public class InternalNodeTest {
     public void testA() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'A', 'A', 'C', 'T'};
-        n.insert(seq1, 1);
+        n.insert(seq1, 1, true);
         char[] seq2 = new char[]{'C', 'A', 'C', 'T'};
-        n.insert(seq2, 1);
+        n.insert(seq2, 1, true);
         char[] seq3 = new char[]{'G', 'G', 'C'};
-        n.insert(seq3, 1);
+        n.insert(seq3, 1, true);
         char[] seq4 = new char[]{'T', 'G', 'C'};
-        n.insert(seq4, 1);
+        n.insert(seq4, 1, true);
         
         assertEquals(((LeafNode) ((InternalNode) n).a()).dna(), seq1);
     }
@@ -277,13 +272,13 @@ public class InternalNodeTest {
     public void testG() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'A', 'A', 'C', 'T'};
-        n.insert(seq1, 1);
+        n.insert(seq1, 1, true);
         char[] seq2 = new char[]{'C', 'A', 'C', 'T'};
-        n.insert(seq2, 1);
+        n.insert(seq2, 1, true);
         char[] seq3 = new char[]{'G', 'G', 'C'};
-        n.insert(seq3, 1);
+        n.insert(seq3, 1, true);
         char[] seq4 = new char[]{'T', 'G', 'C'};
-        n.insert(seq4, 1);
+        n.insert(seq4, 1, true);
         
         assertEquals(((LeafNode) ((InternalNode) n).g()).dna(), seq3);
     }
@@ -295,13 +290,13 @@ public class InternalNodeTest {
     public void testC() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'A', 'A', 'C', 'T'};
-        n.insert(seq1, 1);
+        n.insert(seq1, 1, true);
         char[] seq2 = new char[]{'C', 'A', 'C', 'T'};
-        n.insert(seq2, 1);
+        n.insert(seq2, 1, true);
         char[] seq3 = new char[]{'G', 'G', 'C'};
-        n.insert(seq3, 1);
+        n.insert(seq3, 1, true);
         char[] seq4 = new char[]{'T', 'G', 'C'};
-        n.insert(seq4, 1);
+        n.insert(seq4, 1, true);
         
         assertEquals(((LeafNode) ((InternalNode) n).c()).dna(), seq2);
     }
@@ -313,13 +308,13 @@ public class InternalNodeTest {
     public void testT() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'A', 'A', 'C', 'T'};
-        n.insert(seq1, 1);
+        n.insert(seq1, 1, true);
         char[] seq2 = new char[]{'C', 'A', 'C', 'T'};
-        n.insert(seq2, 1);
+        n.insert(seq2, 1, true);
         char[] seq3 = new char[]{'G', 'G', 'C'};
-        n.insert(seq3, 1);
+        n.insert(seq3, 1, true);
         char[] seq4 = new char[]{'T', 'G', 'C'};
-        n.insert(seq4, 1);
+        n.insert(seq4, 1, true);
         
         assertEquals(((LeafNode) ((InternalNode) n).t()).dna(), seq4);
     }
@@ -331,15 +326,15 @@ public class InternalNodeTest {
     public void test$() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'A', 'A', 'C'};
-        n.insert(seq1, 1);
+        n.insert(seq1, 1, true);
         char[] seq2 = new char[]{'C', 'A', 'T'};
-        n.insert(seq2, 1);
+        n.insert(seq2, 1, true);
         char[] seq3 = new char[]{'G', 'G', 'C'};
-        n.insert(seq3, 1);
+        n.insert(seq3, 1, true);
         char[] seq4 = new char[]{'T', 'G', 'C'};
-        n.insert(seq4, 1);
+        n.insert(seq4, 1, true);
         char[] seq5 = new char[]{'A'};
-        n.insert(seq5, 1);
+        n.insert(seq5, 1, true);
         
         assertEquals(((LeafNode) ((InternalNode) n.a()).$()).dna(), seq5);
     }
@@ -351,7 +346,7 @@ public class InternalNodeTest {
     public void testIsLeaf() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'A', 'G', 'C', 'T'};
-        n.insert(seq1, 1);
+        n.insert(seq1, 1, true);
         
         assertTrue(n.a().isLeaf());
     }
@@ -363,7 +358,7 @@ public class InternalNodeTest {
     public void testIsFlyweight() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'A', 'G', 'C', 'T'};
-        n.insert(seq1, 1);
+        n.insert(seq1, 1, true);
         
         assertTrue(n.c().isFlyweight());
         assertTrue(n.g().isFlyweight());
