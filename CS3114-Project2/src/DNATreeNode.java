@@ -28,7 +28,7 @@ public interface DNATreeNode {
      * @param level the level for recursive insertion
      * @return DNATreeNode the node that was inserted
      */
-    DNATreeNode insert(char[] sequence, int level);
+    DNATreeNode insert(char[] sequence, int level, boolean print);
     
     DNATreeNode remove(char[] sequence, int level);
     

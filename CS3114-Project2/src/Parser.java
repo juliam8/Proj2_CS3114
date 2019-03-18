@@ -106,7 +106,7 @@ public class Parser {
        else {
            System.out.print("sequence ");
            System.out.print(sequence);
-           System.out.println(" inserted at level ");
+           System.out.print(" inserted at level ");
            mTree.insert(sequence);
         }
     }

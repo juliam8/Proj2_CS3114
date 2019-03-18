@@ -29,7 +29,7 @@ public class FlyweightNodeTest {
         DNATreeNode n = new FlyweightNode();
         assertTrue(n.isFlyweight());
         char[] arr = {'A', 'C', 'T'};
-        n = n.insert(arr, 0);
+        n = n.insert(arr, 0, true);
         assertTrue(n.isLeaf());
         assertFalse(n.isFlyweight());
     }

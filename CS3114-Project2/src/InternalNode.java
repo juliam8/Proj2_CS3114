@@ -45,23 +45,36 @@ public class InternalNode implements DNATreeNode {
      * @param level the level at which the node is
      * @return DNATreeNode 
      */
-    public DNATreeNode insert(char[] sequence, int level) {
+    public DNATreeNode insert(char[] sequence, int level, boolean print) {
         nodeLevel = level;
         if (level-1 == sequence.length) {
             LeafNode n = new LeafNode(sequence);
+            System.out.println(level);
             set$(n);
         }
         else if (sequence[level-1] == 'A') {
-            setA(a.insert(sequence, level + 1));
+            if(a.isFlyweight() && print) {
+                System.out.println(level);
+            }
+            setA(a.insert(sequence, level + 1, print));
         }
         else if (sequence[level-1] == 'C') {
-            setC(c.insert(sequence, level + 1));
+            if(c.isFlyweight() && print) {
+                System.out.println(level);
+            }
+            setC(c.insert(sequence, level + 1, print));
         }
         else if (sequence[level-1] == 'G') {
-            setG(g.insert(sequence, level + 1));
+            if(g.isFlyweight() && print) {
+                System.out.println(level);
+            }
+            setG(g.insert(sequence, level + 1, print));
         }
         else if (sequence[level-1] == 'T') {
-            setT(t.insert(sequence, level + 1));
+            if(t.isFlyweight() && print) {
+                System.out.println(level);
+            }
+            setT(t.insert(sequence, level + 1, print));
         }
         return this;
     }
