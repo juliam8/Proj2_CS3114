@@ -126,12 +126,12 @@ public class LeafNode implements DNATreeNode{
     //if search sequence has $ at the end, then you
     //only check if that EXACT sequence exists.
     //if it doesn't have that $ at the end, print out all.
-    public boolean search(char[] sequence, int level) {
-        if (Arrays.equals(sequence, DNASequence)) {
-            return true;
-        }
-        return false;
-    }
+   // public boolean search(char[] sequence, int level) {
+   //     if (Arrays.equals(sequence, DNASequence)) {
+   //         return true;
+   //     }
+   //     return false;
+   // }
     
     /**
      * Sets the DNA sequence to a new value

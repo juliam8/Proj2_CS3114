@@ -52,20 +52,17 @@ public class LeafNodeTest {
         fail("Not yet implemented");
     }
 
-    /**
-     * Test method for {@link LeafNode#search(char[], int)}.
-     */
-    @Test
-    public void testSearchCharArrayInt() {
-        fail("Not yet implemented");
-    }
 
     /**
      * Test method for {@link LeafNode#setDNA(char[])}.
      */
     @Test
     public void testSetDNA() {
-        fail("Not yet implemented");
+        DNATreeNode n = new LeafNode();
+        char[] seq1 = new char[]{'T', 'T', 'C', 'T'};
+        ((LeafNode) n).setDNA(seq1);
+        
+        assertEquals(((LeafNode) n).dna(), seq1);
     }
 
     /**
@@ -73,7 +70,11 @@ public class LeafNodeTest {
      */
     @Test
     public void testDna() {
-        fail("Not yet implemented");
+        InternalNode n = new InternalNode();
+        char[] seq1 = new char[]{'A', 'A', 'C', 'T'};
+        n.insert(seq1, 1, true);
+        
+        assertEquals(((LeafNode) ((InternalNode) n).a()).dna(), seq1);
     }
 
     /**
@@ -81,7 +82,10 @@ public class LeafNodeTest {
      */
     @Test
     public void testIsLeaf() {
-        fail("Not yet implemented");
+        char[] seq1 = new char[]{'A', 'G', 'C', 'T'};
+        DNATreeNode n = new LeafNode(seq1);
+        
+        assertTrue(n.isLeaf());
     }
 
     /**
@@ -89,7 +93,14 @@ public class LeafNodeTest {
      */
     @Test
     public void testIsFlyweight() {
-        fail("Not yet implemented");
+        DNATreeNode n = new InternalNode();
+        char[] seq1 = new char[]{'A', 'A', 'T', 'T'};
+        n.insert(seq1, 1, true);
+        assertTrue(((InternalNode) n).c().isFlyweight());
+        assertTrue(((InternalNode) n).g().isFlyweight());
+        assertTrue(((InternalNode) n).t().isFlyweight());
+        assertTrue(((InternalNode) n).$().isFlyweight());
+
     }
 
     /**
@@ -97,7 +108,11 @@ public class LeafNodeTest {
      */
     @Test
     public void testPercentA() {
-        fail("Not yet implemented");
+        InternalNode n = new InternalNode();
+        char[] seq1 = new char[]{'A', 'A', 'T', 'T'};
+        n.insert(seq1, 1, true);
+        
+        assertEquals(((LeafNode) n.a()).percentA(), 50.00, 0.1);
     }
 
     /**
@@ -105,7 +120,11 @@ public class LeafNodeTest {
      */
     @Test
     public void testPercentC() {
-        fail("Not yet implemented");
+        InternalNode n = new InternalNode();
+        char[] seq1 = new char[]{'C', 'C', 'T', 'T'};
+        n.insert(seq1, 1, true);
+        
+        assertEquals(((LeafNode) n.c()).percentC(), 50.00, 0.1);
     }
 
     /**
@@ -113,7 +132,11 @@ public class LeafNodeTest {
      */
     @Test
     public void testPercentG() {
-        fail("Not yet implemented");
+        InternalNode n = new InternalNode();
+        char[] seq1 = new char[]{'G', 'A', 'T', 'T'};
+        n.insert(seq1, 1, true);
+        
+        assertEquals(((LeafNode) n.g()).percentG(), 25.00, 0.1);
     }
 
     /**
@@ -121,7 +144,11 @@ public class LeafNodeTest {
      */
     @Test
     public void testPercentT() {
-        fail("Not yet implemented");
+        InternalNode n = new InternalNode();
+        char[] seq1 = new char[]{'A', 'A', 'T', 'T'};
+        n.insert(seq1, 1, true);
+        
+        assertEquals(((LeafNode) n.a()).percentT(), 50.00, 0.1);
     }
 
 }
