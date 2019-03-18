@@ -163,6 +163,12 @@ public class Parser {
             curSearch.exactMatch = true;
         }
         mTree.search(sequence, curSearch);
+        
+        if (!curSearch.sequenceFound && !insertCheck) {
+            System.out.println("no sequence found");
+            System.out.print("# of nodes visited: ");
+            System.out.println(curSearch.getNumberOfNodesVisited());
+        }
         if (curSearch.sequenceFound) {
             return true;
         }

@@ -71,15 +71,8 @@ public class Tree<N> {
      * @return returns true if found
      */
     public void search(char[] sequence, SequenceSearch curSearch) {
-        if (root == null) {
-            System.out.println("no sequence found");
-        }
-        
+
         root.search(sequence, 0, curSearch);
-        
-        if (!curSearch.sequenceFound) {
-            System.out.println("no sequence found");
-        }
     }
 
     /**

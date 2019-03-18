@@ -46,6 +46,7 @@ public class FlyweightNode implements DNATreeNode {
      * @param sequence the DNA sequence to find
      */
     public void search(char[] sequence, int level, SequenceSearch curSearch) {
+        curSearch.incrementNumOfNodesVisited();
         return;        
     }
     

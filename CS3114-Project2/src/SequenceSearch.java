@@ -17,10 +17,14 @@ public class SequenceSearch {
         numberOfNodesVisited++;
     }
     
+    public int getNumberOfNodesVisited() {
+        return numberOfNodesVisited;
+    }
+    
     /**
      * Stores the number of nodes visited in this search instance
      */
-    public int numberOfNodesVisited;
+    private int numberOfNodesVisited;
     
     /**
      * Is set based on whether the search is exact
