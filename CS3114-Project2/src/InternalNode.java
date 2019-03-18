@@ -126,43 +126,12 @@ public class InternalNode implements DNATreeNode {
      * Finds a sequence
      * @param sequence the DNA sequence to find
      */
-    public String search(char[] sequence, int level, boolean check) {
+    public boolean search(char[] sequence, int level, boolean check) {
         //if (level-1 == sequence.length) {
         //    LeafNode n = new LeafNode(sequence);
         //    search(n, level + 1);
         //}
-        if (level < sequence.length) {
-            if (sequence[level] == 'A') {
-                return (a.search(sequence, level + 1, check));
-            }
-            else if (sequence[level] == 'C') {
-                return c.search(sequence, level + 1, check);
-            }
-            else if (sequence[level] == 'G') {
-                return g.search(sequence, level + 1, check);
-            }
-            else if (sequence[level] == 'T') {
-                return t.search(sequence, level + 1, check);
-            }
-        }
-        else if (level == sequence.length) {
-            if (sequence[level-1] == 'A') {
-                a.search(sequence, level, check);
-            }
-            else if (sequence[level-1] == 'C') {
-                c.search(sequence, level, check);
-            }
-            else if (sequence[level-1] == 'G') {
-                g.search(sequence, level, check);
-            }
-            else if (sequence[level-1] == 'T') {
-                t.search(sequence, level, check);
-            }
-            else if (sequence[level-1] == '$') {
-                $.search(sequence, level, check);
-            }
-        }
-        return "fina";
+        return true;
     }
     
     public boolean search(char[] sequence, int level) {

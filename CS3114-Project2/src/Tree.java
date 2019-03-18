@@ -73,9 +73,9 @@ public class Tree<N> {
     public boolean search(char[] sequence, boolean check) {
         if (root == null) return false;
         boolean found = root.search(sequence, 0, check);
-        if (!found) {
-            System.out.println("no sequence found");
-        }
+       // if (!found) {
+         //   System.out.println("no sequence found");
+        //}
         return found;
     }
 
