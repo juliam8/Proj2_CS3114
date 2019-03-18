@@ -1,5 +1,6 @@
 insert ACGT
 insert AA
+insert AA
 print
 remove AA
 print
