@@ -164,8 +164,10 @@ public class Parser {
         }
         mTree.search(sequence, curSearch);
         
-        if (!curSearch.sequenceFound && !insertCheck) {
-            System.out.println("no sequence found");
+        if (!insertCheck) {
+            if (!curSearch.sequenceFound) {
+                System.out.println("no sequence found");
+            }
             System.out.print("# of nodes visited: ");
             System.out.println(curSearch.getNumberOfNodesVisited());
         }
