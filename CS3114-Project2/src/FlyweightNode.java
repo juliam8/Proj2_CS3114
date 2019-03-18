@@ -23,8 +23,10 @@ public class FlyweightNode implements DNATreeNode {
      * @param level the level at which to insert
      * @return the new node 
      */
-    public DNATreeNode insert(char[] sequence, int level) {
+    public DNATreeNode insert(char[] sequence, int level, boolean print) {
         //System.out.println(level - 1);
+        //LeafNode n = new LeafNode();
+        //return n.insert(sequence, 0);
         return new LeafNode(sequence);
     }
     

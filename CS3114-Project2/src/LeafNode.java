@@ -12,6 +12,12 @@ import java.util.Arrays;
  */
 public class LeafNode implements DNATreeNode{
     
+    LeafNode() {
+        char[] arr = {};
+        DNASequence = arr;
+        length = 0;
+        
+    }
     /**
      * Constructor for LeafNode class
      * @param sequence the DNA sequence for this leaf node
@@ -41,11 +47,17 @@ public class LeafNode implements DNATreeNode{
      * @param level the level at which to insert
      * @return the node that was inserted
      */
-    public DNATreeNode insert(char[] sequence, int level) {
+    public DNATreeNode insert(char[] sequence, int level, boolean print) {
+        
+        //if(length != 0) {
         InternalNode n = new InternalNode();
-        n.insert(DNASequence, level);
-        n.insert(sequence, level);
+        n.insert(DNASequence, level, false);
+        n.insert(sequence, level, true);
         return n;
+        //}
+        
+       // return new LeafNode(sequence);
+       
     }
     
     public DNATreeNode remove(char[] sequence, int level) {
