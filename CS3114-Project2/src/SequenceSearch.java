@@ -3,8 +3,15 @@
  * @author abbym1
  * @version 2019-03-02
  *
- * SequenceFound Object
- * *description*
+ *      SequenceSearch Object
+ *      
+ * This object:
+ * 1. Stores boolean data utilized during the searching process. 
+ *      There are booleans to indicate if the search is for
+ *      an exact match, if the output should be printed, and if
+ *      the sequence has been found.
+ * 2. Keeps track of the number of nodes that have been visited
+ *    in the current search
  */
 public class SequenceSearch {
     
