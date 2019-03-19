@@ -12,7 +12,7 @@ import org.junit.Test;
  * @version 2019-03-02
  * 
  * Leaf Node Test Object
- * *description*
+ * Testing file for leaf node object
  */
 public class LeafNodeTest {
 

@@ -12,7 +12,7 @@ import org.junit.Test;
  * @version 2019-03-02
  * 
  *          Flyweight Node Test Object
- *          *description*
+ *          Testing file for flyweight node class
  */
 public class FlyweightNodeTest {
 

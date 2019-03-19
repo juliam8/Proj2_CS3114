@@ -52,16 +52,16 @@ import java.io.FileNotFoundException;
 public class DNAtree {
 
     /**
-     * This is the main function of project 2
+     * This is the main function of project 2. It acts as the starting
+     *      point for the above mentioned functionality.
      * Compiler: javac
      * JDK: 11.0.2
      * OS: Windows 10
-     * Completed: 03/15/2019
+     * Completed: 03/19/2019
      * 
      * @param args
      *            input string array
      * @throws FileNotFoundException
-     * 
      * 
      */
     public static void main(String[] args) throws FileNotFoundException {
