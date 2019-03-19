@@ -166,6 +166,7 @@ public class Parser {
             sequence = Arrays.copyOf(sequence, sequence.length-1);
         }
         if (insertCheck) {
+            curSearch.exactMatch = true;
             curSearch.insertCheck = true;
         }
         
