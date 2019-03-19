@@ -15,7 +15,7 @@ public class LeafNode implements DNATreeNode {
      */
     LeafNode() {
         char[] arr = {};
-        DNASequence = arr;
+        dnaSequence = arr;
         length = 0;
         
     }
@@ -25,7 +25,7 @@ public class LeafNode implements DNATreeNode {
      * @param sequence the DNA sequence for this leaf node
      */
     LeafNode(char[] sequence) {
-        DNASequence = sequence;
+        dnaSequence = sequence;
         length = sequence.length;
         
         char[] letters = "ACGT".toCharArray();
@@ -56,7 +56,7 @@ public class LeafNode implements DNATreeNode {
         
         //if(length != 0) {
         InternalNode n = new InternalNode();
-        n.insert(DNASequence, level, false);
+        n.insert(dnaSequence, level, false);
         n.insert(sequence, level, true);
         return n;
         //}
@@ -65,14 +65,14 @@ public class LeafNode implements DNATreeNode {
        
     }
     
-    /* 
+    /**
      * Removes specified sequence
      * @param sequence the sequence to remove
      * @param level the level at which it is
      * @return the DNA node that was removed
      */
     public DNATreeNode remove(char[] sequence, int level) {
-        if (Arrays.equals(sequence, DNASequence)) {
+        if (Arrays.equals(sequence, dnaSequence)) {
             return new FlyweightNode();
         }
         else {
@@ -86,7 +86,7 @@ public class LeafNode implements DNATreeNode {
      * @param stat boolean whether or not to print stats
      */
     public void print(boolean len, boolean stat) {
-        System.out.print(DNASequence);
+        System.out.print(dnaSequence);
         if (len) {
             System.out.print(" " + length);
         }
@@ -117,20 +117,20 @@ public class LeafNode implements DNATreeNode {
         
         if (!curSearch.exactMatch) {
             char [] subArray;
-            subArray = Arrays.copyOfRange(DNASequence, 0, sequence.length);
+            subArray = Arrays.copyOfRange(dnaSequence, 0, sequence.length);
             if (Arrays.equals(sequence, subArray)) {
                 System.out.print("sequence: ");
-                System.out.println(DNASequence);
+                System.out.println(dnaSequence);
                 curSearch.sequenceFound = true;
             }
         }
         else {
-            if (Arrays.equals(sequence, DNASequence)) {
+            if (Arrays.equals(sequence, dnaSequence)) {
                 curSearch.sequenceFound = true;
                 
                 if (!curSearch.insertCheck) {
                     System.out.print("sequence: ");
-                    System.out.println(DNASequence);
+                    System.out.println(dnaSequence);
                 }
             }
         }
@@ -141,7 +141,7 @@ public class LeafNode implements DNATreeNode {
      * @param sequence the sequence to set
      */
     public void setDNA(char[] sequence) {
-        DNASequence = sequence;
+        dnaSequence = sequence;
     }
     
     /**
@@ -149,7 +149,7 @@ public class LeafNode implements DNATreeNode {
      * @return the DNA sequence
      */
     public char[] dna() {
-        return DNASequence;
+        return dnaSequence;
     }
     
     /**
@@ -203,7 +203,7 @@ public class LeafNode implements DNATreeNode {
     /**
      * Member variable that holds the DNA sequence of the node
      */
-    private char[] DNASequence;
+    private char[] dnaSequence;
     
     private int length;
     private double percentA;

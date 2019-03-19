@@ -9,8 +9,12 @@ import org.junit.Test;
  */
 
 /**
- * @author amalone46
- *
+ * @author juliam8
+ * @author abbym1
+ * @version 2019-03-02
+ * 
+ * Parser Test Object
+ * *description*
  */
 public class ParserTest {
 
@@ -21,12 +25,38 @@ public class ParserTest {
     public final void testParser() {
         Tree<DNATreeNode> myTree;
         myTree = new Tree<DNATreeNode>();
+        assertEquals(myTree.nodeCount(), 0);
+        //should be a flyweight, not null
+        assertNotNull(myTree.root());
+        
+        File tFile = new File("P2ParserTestFile.txt");
+        assertNotNull(tFile);
         
         // parse is a Parser object used to interpret the 
         // input file contents and execute commands
-        Parser parse = new Parser(new File("src\\P2sampleinput.txt"), myTree);
-        parse.execute();
-        assertNotEquals(parse, 0);
+        Parser myparse = new Parser(tFile, myTree);
+        // should be a flyweight, not null
+        assertNotNull(myparse.mTree.root());      
     }
-
+    
+    /**
+     * Test method for {@link Parser#Execute()}.
+     */
+    @Test
+    public final void testExecute() {
+        
+        Tree<DNATreeNode> myTree;
+        myTree = new Tree<DNATreeNode>();
+        assertEquals(myTree.nodeCount(), 0);
+        assertNotNull(myTree.root());
+        
+        File tFile = new File("P2ParserTestFile.txt");
+        assertNotNull(tFile);
+        
+        // parse is a Parser object used to interpret the 
+        // input file contents and execute commands
+        Parser myparse = new Parser(tFile, myTree);
+        myparse.execute();
+        assertEquals(myparse.mTree.nodeCount(), 1);
+    }
 }

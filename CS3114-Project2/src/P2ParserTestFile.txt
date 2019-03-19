@@ -1,0 +1,7 @@
+insert A
+insert T
+remove A
+print
+print lengths
+print stats
+search T

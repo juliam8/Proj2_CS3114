@@ -3,8 +3,6 @@
  * @author juliam8
  * @author abbym1
  * @version 2019-03-02
- * @param 
- * @param 
  *
  * Internal Node Object
  * *description*
@@ -16,7 +14,7 @@ public class InternalNode implements DNATreeNode {
      * Default Constructor
      * Sets all child pointers to the flyweight
      */
-    InternalNode(){
+    InternalNode() {
         a = new FlyweightNode();
         g = new FlyweightNode();
         c = new FlyweightNode();
@@ -28,35 +26,37 @@ public class InternalNode implements DNATreeNode {
      * Inserts a node at a certain level
      * @param sequence the DNA sequence to insert
      * @param level the level at which the node is
-     * @return DNATreeNode 
+     * @param print whether or not to print the inserted level
+     * @return DNATreeNode that was inserted
      */
     public DNATreeNode insert(char[] sequence, int level, boolean print) {
         nodeLevel = level;
-        if (level-1 == sequence.length) {
+        if (level - 1 == sequence.length) {
             LeafNode n = new LeafNode(sequence);
-            if(print)
+            if (print) {
                 System.out.println(level);
-            set$(n);
+            }
+            setMoney(n);
         }
-        else if (sequence[level-1] == 'A') {
+        else if (sequence[level - 1] == 'A') {
             if (a.isFlyweight() && print) {
                 System.out.println(level);
             }
             setA(a.insert(sequence, level + 1, print));
         }
-        else if (sequence[level-1] == 'C') {
+        else if (sequence[level - 1] == 'C') {
             if (c.isFlyweight() && print) {
                 System.out.println(level);
             }
             setC(c.insert(sequence, level + 1, print));
         }
-        else if (sequence[level-1] == 'G') {
+        else if (sequence[level - 1] == 'G') {
             if (g.isFlyweight() && print) {
                 System.out.println(level);
             }
             setG(g.insert(sequence, level + 1, print));
         }
-        else if (sequence[level-1] == 'T') {
+        else if (sequence[level - 1] == 'T') {
             if (t.isFlyweight() && print) {
                 System.out.println(level);
             }
@@ -65,61 +65,64 @@ public class InternalNode implements DNATreeNode {
         return this;
     }
     
+    /**
+     * Traverses down to find leaf node to remove
+     * @param sequence the sequence to remove
+     * @param level the level at which the search is
+     * @return the removed DNA tree node
+     */
     public DNATreeNode remove(char[] sequence, int level) {
-        if (level-1 == sequence.length) {
-            set$($.remove(sequence, level));
+        if (level - 1 == sequence.length) {
+            setMoney($.remove(sequence, level));
         }
-        else if (sequence[level-1] == 'A') {
+        else if (sequence[level - 1] == 'A') {
             setA(a.remove(sequence, level + 1));
         }
-        else if (sequence[level-1] == 'C') {
+        else if (sequence[level - 1] == 'C') {
             setC(c.remove(sequence, level + 1));
         }
-        else if (sequence[level-1] == 'G') {
+        else if (sequence[level - 1] == 'G') {
             setG(g.remove(sequence, level + 1));
         }
-        else if (sequence[level-1] == 'T') {
+        else if (sequence[level - 1] == 'T') {
             setT(t.remove(sequence, level + 1));
         }
         return shrinkCheck();
     }
     
+    /**
+     * @return the DNA tree node that needs to be shrunk
+     */
     private DNATreeNode shrinkCheck() {
         if (!a.isFlyweight()) {
             if (g.isFlyweight() && c.isFlyweight() &&
-               t.isFlyweight() && $.isFlyweight()) {
-                if (a.isLeaf()) {
-                    return a;
-                }
+                t.isFlyweight() && $.isFlyweight()
+                && a.isLeaf()) {
+                return a;
             }
         }
         else if (!g.isFlyweight()) {
             if (c.isFlyweight() && t.isFlyweight() &&
-                $.isFlyweight()) {
-                if (g.isLeaf()) {
-                    return g;
-                }
+                $.isFlyweight() && g.isLeaf()) {
+                return g;
             }
         }
         else if (!c.isFlyweight()) {
-            if (t.isFlyweight() && $.isFlyweight()) {
-                if (c.isLeaf()) {
-                    return c;
-                }
+            if (t.isFlyweight() && $.isFlyweight()
+                && c.isLeaf()) {
+                return c;
             }
         }
         else if (!t.isFlyweight()) {
-            if($.isFlyweight()) {
-                if (t.isLeaf()) {
-                    return t;
-                }
+            if ($.isFlyweight() && t.isLeaf()) {
+                return t;
             }
         }
         else {
             if ($.isFlyweight()) {
                 return new FlyweightNode();
             }
-            else if (!$.isFlyweight() && $.isLeaf()){
+            else if (!$.isFlyweight() && $.isLeaf()) {
                 return $;
             }
         }   
@@ -129,6 +132,8 @@ public class InternalNode implements DNATreeNode {
     /**
      * Finds a sequence
      * @param sequence the DNA sequence to find
+     * @param level the level at which the search is
+     * @param curSearch the search variables for this instance
      */
     public void search(char[] sequence, int level, SequenceSearch curSearch) {
         curSearch.incrementNumOfNodesVisited();
@@ -190,7 +195,7 @@ public class InternalNode implements DNATreeNode {
     
     /**
      * Setter for A child
-     * @param inA
+     * @param inA the DNA tree node to set as the A child
      */
     public void setA(DNATreeNode inA) {
         a = inA;
@@ -198,7 +203,7 @@ public class InternalNode implements DNATreeNode {
     
     /**
      * Setter for G child
-     * @param inG
+     * @param inG the DNA tree node to set as the G child
      */
     public void setG(DNATreeNode inG) {
         g = inG;
@@ -206,7 +211,7 @@ public class InternalNode implements DNATreeNode {
     
     /**
      * Setter for C child
-     * @param inC
+     * @param inC the DNA tree node to set as the C child
      */
     public void setC(DNATreeNode inC) {
         c = inC;
@@ -214,7 +219,7 @@ public class InternalNode implements DNATreeNode {
     
     /**
      * Setter for T child
-     * @param inT
+     * @param inT the DNA tree node to set as the T child
      */
     public void setT(DNATreeNode inT) {
         t = inT;
@@ -222,10 +227,10 @@ public class InternalNode implements DNATreeNode {
 
     /**
      * Setter for $ child
-     * @param in$
+     * @param in$ the DNA tree node to set as the $ child
      */
-    public void set$(DNATreeNode in$) {
-        $ = in$;
+    public void setMoney(DNATreeNode inMoney) {
+        $ = inMoney;
     }
     
     
@@ -265,7 +270,7 @@ public class InternalNode implements DNATreeNode {
      * Getter for $ child
      * @return DNATreeNode t
      */
-    public DNATreeNode $() {
+    public DNATreeNode getMoney() {
         return $;
     }
     

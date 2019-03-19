@@ -13,6 +13,7 @@ public class FlyweightNode implements DNATreeNode {
      * Constructor for FlyweightNode class
      */
     FlyweightNode() {
+        //empty because no variables need to be set
     }
     
     /**
