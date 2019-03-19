@@ -159,15 +159,16 @@ public class Parser {
         SequenceSearch curSearch = new SequenceSearch();
         curSearch.sequenceFound = false;
         curSearch.exactMatch = false;
+        curSearch.insertCheck = false;
         int lastChar = sequence.length-1;
         if (sequence[lastChar] == '$' || insertCheck) {
-            if (sequence[lastChar] == '$') {
-                String str = sequence.toString();
-                String newStr = str.substring(0, lastChar-1);
-                sequence = newStr.toCharArray();
-            }
             curSearch.exactMatch = true;
+            sequence = Arrays.copyOf(sequence, sequence.length-1);
         }
+        if (insertCheck) {
+            curSearch.insertCheck = true;
+        }
+        
         mTree.search(sequence, curSearch);
         
         if (!insertCheck) {

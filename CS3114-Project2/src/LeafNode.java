@@ -114,6 +114,11 @@ public class LeafNode implements DNATreeNode{
         else {
             if (Arrays.equals(sequence, DNASequence)) {
                 curSearch.sequenceFound = true;
+                
+                if (!curSearch.insertCheck) {
+                    System.out.print("sequence: ");
+                    System.out.println(DNASequence);
+                }
             }
         }
     }

@@ -23,21 +23,6 @@ public class InternalNode implements DNATreeNode {
         t = new FlyweightNode();
         $ = new FlyweightNode();
     }
-    /**
-     * Parameterized Constructor
-     * @param inA
-     * @param inC
-     * @param inG
-     * @param inT
-     * @param in$
-     */
-    /*InternalNode(DNATreeNode inA, DNATreeNode inC, DNATreeNode inG, DNATreeNode inT, DNATreeNode in$){
-        a = inA;
-        c = inC;
-        g = inG;
-        t = inT;
-        $ = in$;
-    }*/
     
     /**
      * Inserts a node at a certain level
