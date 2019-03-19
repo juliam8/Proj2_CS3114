@@ -1,4 +1,3 @@
-insert ACGT     
 insert AG
 insert AGG
 insert CTC
