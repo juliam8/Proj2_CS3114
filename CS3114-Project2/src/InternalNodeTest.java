@@ -26,18 +26,10 @@ public class InternalNodeTest {
         assertTrue(n.c().isFlyweight());
         assertTrue(n.g().isFlyweight());
         assertTrue(n.t().isFlyweight());
-        assertTrue(n.getMoney().isFlyweight());
+        assertTrue(n.getCashMoney().isFlyweight());
         assertFalse(n.isFlyweight());
         assertFalse(n.isLeaf());
     }
-
-    /**
-     * Test method for {@link InternalNode#InternalNode(DNATreeNode, DNATreeNode, DNATreeNode, DNATreeNode, DNATreeNode)}.
-     
-    @Test
-    public void testInternalNodeDNATreeNodeDNATreeNodeDNATreeNodeDNATreeNodeDNATreeNode() {
-        fail("Not yet implemented");
-    }*/
 
     /**
      * Test method for {@link InternalNode#insert(char[], int)}.
@@ -131,12 +123,12 @@ public class InternalNodeTest {
         n.insert(seq5, 1, true);
         
         SequenceSearch curSearch = new SequenceSearch();
-        curSearch.sequenceFound = false;
-        curSearch.exactMatch = true;
+        curSearch.setSequenceFound(false);
+        curSearch.setExactMatch(true);
         
         n.search(seq1, 1, curSearch);
-        assertTrue(curSearch.sequenceFound);
-        assertTrue(curSearch.exactMatch);
+        assertTrue(curSearch.getSequenceFound());
+        assertTrue(curSearch.getExactMatch());
         assertEquals(curSearch.getNumberOfNodesVisited(), 2);
     }
 
@@ -175,7 +167,7 @@ public class InternalNodeTest {
         assertTrue(n.c().isFlyweight());
         assertTrue(n.g().isFlyweight());
         assertTrue(n.t().isFlyweight());
-        assertTrue(n.getMoney().isFlyweight());
+        assertTrue(n.getCashMoney().isFlyweight());
         assertEquals(((LeafNode) ((InternalNode) n).a()).dna(), seq1);
     }
 
@@ -192,7 +184,7 @@ public class InternalNodeTest {
         assertTrue(n.c().isFlyweight());
         assertTrue(n.a().isFlyweight());
         assertTrue(n.t().isFlyweight());
-        assertTrue(n.getMoney().isFlyweight());
+        assertTrue(n.getCashMoney().isFlyweight());
         assertEquals(((LeafNode) ((InternalNode) n).g()).dna(), seq1);
     }
 
@@ -209,7 +201,7 @@ public class InternalNodeTest {
         assertTrue(n.a().isFlyweight());
         assertTrue(n.g().isFlyweight());
         assertTrue(n.t().isFlyweight());
-        assertTrue(n.getMoney().isFlyweight());
+        assertTrue(n.getCashMoney().isFlyweight());
         assertEquals(((LeafNode) ((InternalNode) n).c()).dna(), seq1);
     }
 
@@ -226,15 +218,15 @@ public class InternalNodeTest {
         assertTrue(n.c().isFlyweight());
         assertTrue(n.g().isFlyweight());
         assertTrue(n.a().isFlyweight());
-        assertTrue(n.getMoney().isFlyweight());
+        assertTrue(n.getCashMoney().isFlyweight());
         assertEquals(((LeafNode) ((InternalNode) n).t()).dna(), seq1);
     }
 
     /**
-     * Test method for {@link InternalNode#set$(DNATreeNode)}.
+     * Test method for {@link InternalNode#setCashMoney(DNATreeNode)}.
      */
     @Test
-    public void testSet$() {
+    public void testSetCashMoney() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'T', 'C'};
         n.insert(seq1, 1, true);
@@ -243,12 +235,13 @@ public class InternalNodeTest {
         
         char[] seq3 = new char[]{'T'};
         DNATreeNode exact = new LeafNode(seq3);
-        ((InternalNode) n.t()).setMoney(exact);
+        ((InternalNode) n.t()).setCashMoney(exact);
         
         assertTrue(n.c().isFlyweight());
         assertTrue(n.g().isFlyweight());
         assertTrue(n.a().isFlyweight());
-        assertEquals(((LeafNode) ((InternalNode) n.t()).getMoney()).dna(), seq3);
+        assertEquals(((LeafNode) ((InternalNode) n.t())
+                .getCashMoney()).dna(), seq3);
     }
 
     /**
@@ -324,10 +317,10 @@ public class InternalNodeTest {
     }
 
     /**
-     * Test method for {@link InternalNode#$()}.
+     * Test method for {@link InternalNode#CashMoney()}.
      */
     @Test
-    public void test$() {
+    public void testCashMoney() {
         InternalNode n = new InternalNode();
         char[] seq1 = new char[]{'A', 'A', 'C'};
         n.insert(seq1, 1, true);
@@ -340,7 +333,8 @@ public class InternalNodeTest {
         char[] seq5 = new char[]{'A'};
         n.insert(seq5, 1, true);
         
-        assertEquals(((LeafNode) ((InternalNode) n.a()).getMoney()).dna(), seq5);
+        assertEquals(((LeafNode) ((InternalNode) n.a())
+                .getCashMoney()).dna(), seq5);
     }
 
     /**
@@ -367,7 +361,7 @@ public class InternalNodeTest {
         assertTrue(n.c().isFlyweight());
         assertTrue(n.g().isFlyweight());
         assertTrue(n.t().isFlyweight());
-        assertTrue(n.getMoney().isFlyweight());
+        assertTrue(n.getCashMoney().isFlyweight());
     }
 
 }

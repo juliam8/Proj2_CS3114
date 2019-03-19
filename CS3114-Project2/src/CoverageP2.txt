@@ -1,0 +1,22 @@
+insert ATTTTTTTT
+insert TTTTTA
+insert GCAAAAA
+insert G
+insert T
+remove GCA
+insert T
+remove TTTTTA
+print
+print lengths
+print stats
+search CAT
+search G
+remove G
+remove ATTTTTTTT
+remove ATTTTTTT
+insert AAAA
+insert AA
+insert AAT
+search AA$
+search AA
+print

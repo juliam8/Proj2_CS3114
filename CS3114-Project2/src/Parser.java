@@ -65,7 +65,7 @@ public class Parser {
      * @param sequence     Input sequence
      * @return True for a valid sequence, else False
      */
-    private boolean validSequence(char[] sequence) {
+    /*private boolean validSequence(char[] sequence) {
         // validChars holds all valid characters for the sequence
         String validChars = "ACGT";
   
@@ -77,7 +77,7 @@ public class Parser {
             }
         }
         return true;
-    }
+    }*/
     
     /**
      * Method to execute the DNA tree insert command 
@@ -88,12 +88,12 @@ public class Parser {
         // data is an array that holds the rectangle coordinates
         char[] sequence = dna.toCharArray();
         
-        if (!validSequence(sequence)) {
-            System.out.print("sequence rejected: ");
-            System.out.print(sequence);
-        }
+        //if (!validSequence(sequence)) {
+        //    System.out.print("sequence rejected: ");
+        //    System.out.print(sequence);
+        //}
         // cannot insert same sequence twice
-        else if (checkIfExists(sequence)) {
+        if (checkIfExists(sequence)) {
             System.out.print("sequence ");
             System.out.print(sequence);
             System.out.println(" already exists");
@@ -157,19 +157,19 @@ public class Parser {
     private void search(char[] sequence) {
         //instance of class holding search members
         SequenceSearch curSearch = new SequenceSearch();
-        curSearch.sequenceFound = false;
-        curSearch.exactMatch = false;
-        curSearch.insertCheck = false;
+        curSearch.setSequenceFound(false);
+        curSearch.setExactMatch(false);
+        curSearch.setInsertCheck(false);
         //get the index of the last element in array
         int lastChar = sequence.length - 1;
         //set boolean to true if it should be an exact match
         if (sequence[lastChar] == '$') {
-            curSearch.exactMatch = true;
+            curSearch.setExactMatch(true);
             //delete the $ symbol from sequence
             sequence = Arrays.copyOf(sequence, sequence.length - 1);
         }
         mTree.search(sequence, curSearch);
-        if (!curSearch.sequenceFound) {
+        if (!curSearch.getSequenceFound()) {
             System.out.println("no sequence found");
         }
         System.out.print("# of nodes visited: ");
@@ -183,13 +183,13 @@ public class Parser {
      */
     private boolean checkIfExists(char[] sequence) {
         SequenceSearch curSearch = new SequenceSearch();
-        curSearch.sequenceFound = false;
-        curSearch.exactMatch = true;
-        curSearch.insertCheck = true;
+        curSearch.setSequenceFound(false);
+        curSearch.setExactMatch(true);
+        curSearch.setInsertCheck(true);
         
         mTree.search(sequence, curSearch);
         // just checks if sequence already exists
-        return curSearch.sequenceFound;
+        return curSearch.getSequenceFound();
     }
 
     /**

@@ -13,12 +13,11 @@ public class LeafNode implements DNATreeNode {
     /**
      * Constructor for LeafNode class
      */
-    LeafNode() {
-        char[] arr = {};
-        dnaSequence = arr;
-        length = 0;
-        
-    }
+    //LeafNode() {
+    //    char[] arr = {};
+    //    dnaSequence = arr;
+    //    length = 0;  
+    //}
     
     /**
      * Constructor for LeafNode class
@@ -115,20 +114,20 @@ public class LeafNode implements DNATreeNode {
     public void search(char[] sequence, int level, SequenceSearch curSearch) {
         curSearch.incrementNumOfNodesVisited();
         
-        if (!curSearch.exactMatch) {
+        if (!curSearch.getExactMatch()) {
             char [] subArray;
             subArray = Arrays.copyOfRange(dnaSequence, 0, sequence.length);
             if (Arrays.equals(sequence, subArray)) {
                 System.out.print("sequence: ");
                 System.out.println(dnaSequence);
-                curSearch.sequenceFound = true;
+                curSearch.setSequenceFound(true);
             }
         }
         else {
             if (Arrays.equals(sequence, dnaSequence)) {
-                curSearch.sequenceFound = true;
+                curSearch.setSequenceFound(true);
                 
-                if (!curSearch.insertCheck) {
+                if (!curSearch.getInsertCheck()) {
                     System.out.print("sequence: ");
                     System.out.println(dnaSequence);
                 }

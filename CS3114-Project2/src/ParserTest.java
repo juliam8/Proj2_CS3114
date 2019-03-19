@@ -58,5 +58,12 @@ public class ParserTest {
         Parser myparse = new Parser(tFile, myTree);
         myparse.execute();
         assertEquals(myparse.mTree.nodeCount(), 1);
+        char[] seq1 = {'G', 'T'};
+        char[] seq2 = {'G', 'T', 'C'};
+        myparse.mTree.insert(seq1);
+        myparse.mTree.insert(seq2);
+        assertEquals(myparse.mTree.nodeCount(), 3);
+        myparse.mTree.clear();
+        assertEquals(myparse.mTree.nodeCount(), 1);
     }
 }

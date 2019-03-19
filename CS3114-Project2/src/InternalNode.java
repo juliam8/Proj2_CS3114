@@ -19,7 +19,7 @@ public class InternalNode implements DNATreeNode {
         g = new FlyweightNode();
         c = new FlyweightNode();
         t = new FlyweightNode();
-        $ = new FlyweightNode();
+        cashMoney = new FlyweightNode();
     }
     
     /**
@@ -36,7 +36,7 @@ public class InternalNode implements DNATreeNode {
             if (print) {
                 System.out.println(level);
             }
-            setMoney(n);
+            setCashMoney(n);
         }
         else if (sequence[level - 1] == 'A') {
             if (a.isFlyweight() && print) {
@@ -73,7 +73,7 @@ public class InternalNode implements DNATreeNode {
      */
     public DNATreeNode remove(char[] sequence, int level) {
         if (level - 1 == sequence.length) {
-            setMoney($.remove(sequence, level));
+            setCashMoney(cashMoney.remove(sequence, level));
         }
         else if (sequence[level - 1] == 'A') {
             setA(a.remove(sequence, level + 1));
@@ -96,34 +96,34 @@ public class InternalNode implements DNATreeNode {
     private DNATreeNode shrinkCheck() {
         if (!a.isFlyweight()) {
             if (g.isFlyweight() && c.isFlyweight() &&
-                t.isFlyweight() && $.isFlyweight()
+                t.isFlyweight() && cashMoney.isFlyweight()
                 && a.isLeaf()) {
                 return a;
             }
         }
         else if (!g.isFlyweight()) {
             if (c.isFlyweight() && t.isFlyweight() &&
-                $.isFlyweight() && g.isLeaf()) {
+                cashMoney.isFlyweight() && g.isLeaf()) {
                 return g;
             }
         }
         else if (!c.isFlyweight()) {
-            if (t.isFlyweight() && $.isFlyweight()
+            if (t.isFlyweight() && cashMoney.isFlyweight()
                 && c.isLeaf()) {
                 return c;
             }
         }
         else if (!t.isFlyweight()) {
-            if ($.isFlyweight() && t.isLeaf()) {
+            if (cashMoney.isFlyweight() && t.isLeaf()) {
                 return t;
             }
         }
         else {
-            if ($.isFlyweight()) {
+            if (cashMoney.isFlyweight()) {
                 return new FlyweightNode();
             }
-            else if (!$.isFlyweight() && $.isLeaf()) {
-                return $;
+            else if (!cashMoney.isFlyweight() && cashMoney.isLeaf()) {
+                return cashMoney;
             }
         }   
         return this;
@@ -156,7 +156,7 @@ public class InternalNode implements DNATreeNode {
             c.search(sequence, level, curSearch);
             g.search(sequence, level, curSearch);
             t.search(sequence, level, curSearch);
-            $.search(sequence, level, curSearch);
+            cashMoney.search(sequence, level, curSearch);
         }
     }
 
@@ -190,7 +190,7 @@ public class InternalNode implements DNATreeNode {
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
-        $.print(len, stat);
+        cashMoney.print(len, stat);
     }
     
     /**
@@ -226,11 +226,11 @@ public class InternalNode implements DNATreeNode {
     }
 
     /**
-     * Setter for $ child
-     * @param in$ the DNA tree node to set as the $ child
+     * Setter for cashMoney child
+     * @param inCashMoney the DNA tree node to set as the cashMoney child
      */
-    public void setMoney(DNATreeNode inMoney) {
-        $ = inMoney;
+    public void setCashMoney(DNATreeNode inCashMoney) {
+        cashMoney = inCashMoney;
     }
     
     
@@ -267,12 +267,13 @@ public class InternalNode implements DNATreeNode {
     }
     
     /**
-     * Getter for $ child
+     * Getter for cashMoney child
      * @return DNATreeNode t
      */
-    public DNATreeNode getMoney() {
-        return $;
+    public DNATreeNode getCashMoney() {
+        return cashMoney;
     }
+    
     
     /**
      * This is an internal node, not a leaf
@@ -312,8 +313,8 @@ public class InternalNode implements DNATreeNode {
      */
     private DNATreeNode t;
     /**
-     * Stores the $ branch of the node
+     * Stores the cashMoney branch of the node
      */
-    private DNATreeNode $;
+    private DNATreeNode cashMoney;
 
 }

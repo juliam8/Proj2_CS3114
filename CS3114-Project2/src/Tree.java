@@ -23,17 +23,17 @@ public class Tree<N> {
      * Sets the private member variables
      * @param sequence the sequence to insert
      */
-    Tree(char[] sequence) {
-        dnaSequence = sequence;
-        nodeCount = 0;
-    }
+    //Tree(char[] sequence) {
+    //    dnaSequence = sequence;
+    //    nodeCount = 0;
+    //}
 
     /**
      * Clears the elements of the DNA Tree
      */
     public void clear() {
-        root = null;
-        nodeCount = 0;
+        root = new FlyweightNode();
+        nodeCount = 1;
     }
 
     /**
@@ -63,9 +63,6 @@ public class Tree<N> {
      * @param stat boolean whether or not to print stats
      */
     public void print(boolean len, boolean stat) {
-        if (root == null) {
-            return;
-        }
         root.print(len, stat);
     }
     
