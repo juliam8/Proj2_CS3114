@@ -62,30 +62,6 @@ public class Parser {
         mScan.close();
     }
 
-
-    /**
-     * Checks input DNA sequence for validity
-     * 
-     * @param sequence
-     *            Input sequence
-     * @return True for a valid sequence, else False
-     */
-    /*
-     * private boolean validSequence(char[] sequence) {
-     * // validChars holds all valid characters for the sequence
-     * String validChars = "ACGT";
-     * 
-     * for (int i = 0; i < sequence.length; ++i) {
-     * // j is a single character in the key
-     * String checkChar = Character.toString(sequence[i]);
-     * if (!validChars.contains(checkChar)) {
-     * return false;
-     * }
-     * }
-     * return true;
-     * }
-     */
-
     /**
      * Method to execute the DNA tree insert command
      */
@@ -94,12 +70,8 @@ public class Parser {
         String dna = mScan.next();
         // data is an array that holds the rectangle coordinates
         char[] sequence = dna.toCharArray();
-
-        // if (!validSequence(sequence)) {
-        // System.out.print("sequence rejected: ");
-        // System.out.print(sequence);
-        // }
-        // cannot insert same sequence twice
+        
+        // do not insert if sequence already exists
         if (checkIfExists(sequence)) {
             System.out.print("sequence ");
             System.out.print(sequence);
@@ -122,9 +94,8 @@ public class Parser {
         String dna = mScan.next();
         // data is an array that holds the rectangle coordinates
         char[] sequence = dna.toCharArray();
-        // DNATreeNode temp = null;// = mTree.remove(sequence);
-        boolean found = checkIfExists(sequence);
-        if (found) {
+
+        if (checkIfExists(sequence)) {
             mTree.remove(sequence);
             System.out.print("sequence " + dna);
             System.out.println(" removed");
@@ -154,6 +125,7 @@ public class Parser {
             mTree.print(false, true);
         }
         else {
+            // both booleans false if command is just "print"
             mTree.print(false, false);
         }
     }
@@ -168,6 +140,7 @@ public class Parser {
     private void search(char[] sequence) {
         // instance of class holding search members
         SequenceSearch curSearch = new SequenceSearch();
+        // set beginning values for search members
         curSearch.setSequenceFound(false);
         curSearch.setExactMatch(false);
         curSearch.setInsertCheck(false);
@@ -189,14 +162,16 @@ public class Parser {
 
 
     /**
-     * Checks if a sequence exists within tree
+     * Checks if a sequence exists within tree, used in remove and insert
      * 
      * @param sequence
      *            the sequence to check for existence
      * @return a boolean that is set if sequence exists
      */
     private boolean checkIfExists(char[] sequence) {
+        // instance of class holding search members
         SequenceSearch curSearch = new SequenceSearch();
+        // set beginning values for search members
         curSearch.setSequenceFound(false);
         curSearch.setExactMatch(true);
         curSearch.setInsertCheck(true);

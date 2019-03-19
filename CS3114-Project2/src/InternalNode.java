@@ -30,15 +30,19 @@ public class InternalNode implements DNATreeNode {
      * @return DNATreeNode that was inserted
      */
     public DNATreeNode insert(char[] sequence, int level, boolean print) {
-        nodeLevel = level;
+        //set nodeLevel insertion for printing space purposes
+        nodeLevel = level; 
         if (level - 1 == sequence.length) {
+            // create a new node, n, if lowest possible depth is reached
             LeafNode n = new LeafNode(sequence);
             if (print) {
                 System.out.println(level);
             }
             setCashMoney(n);
         }
-        else if (sequence[level - 1] == 'A') {
+        // only print level if that is the place of insertion which is 
+        //      dictated by whether the destination is a flyweight
+        else if (sequence[level - 1] == 'A') {    
             if (a.isFlyweight() && print) {
                 System.out.println(level);
             }
@@ -62,6 +66,7 @@ public class InternalNode implements DNATreeNode {
             }
             setT(t.insert(sequence, level + 1, print));
         }
+        //return the altered tree
         return this;
     }
     
@@ -72,6 +77,8 @@ public class InternalNode implements DNATreeNode {
      * @return the removed DNA tree node
      */
     public DNATreeNode remove(char[] sequence, int level) {
+        // set the $ child if at same depth as length of sequence
+        // recursively call each remove function with node types
         if (level - 1 == sequence.length) {
             setCashMoney(cashMoney.remove(sequence, level));
         }
@@ -87,13 +94,16 @@ public class InternalNode implements DNATreeNode {
         else if (sequence[level - 1] == 'T') {
             setT(t.remove(sequence, level + 1));
         }
+        // check if the tree needs to be shrunk after removing the node
         return shrinkCheck();
     }
     
     /**
+     * Shrinks the tree according to if there is one non flyweight
      * @return the DNA tree node that needs to be shrunk
      */
     private DNATreeNode shrinkCheck() {
+        // return A child if a leaf and other children are flyweights
         if (!a.isFlyweight()) {
             if (g.isFlyweight() && c.isFlyweight() &&
                 t.isFlyweight() && cashMoney.isFlyweight()
@@ -101,31 +111,37 @@ public class InternalNode implements DNATreeNode {
                 return a;
             }
         }
+        // return G child if a leaf and rest are flyweights
         else if (!g.isFlyweight()) {
             if (c.isFlyweight() && t.isFlyweight() &&
                 cashMoney.isFlyweight() && g.isLeaf()) {
                 return g;
             }
         }
+        // return C child if a leaf and rest are flyweights
         else if (!c.isFlyweight()) {
             if (t.isFlyweight() && cashMoney.isFlyweight()
                 && c.isLeaf()) {
                 return c;
             }
         }
+        // return T child if a leaf and rest are flyweights
         else if (!t.isFlyweight()) {
             if (cashMoney.isFlyweight() && t.isLeaf()) {
                 return t;
             }
         }
         else {
+            // if all children are flyweights, just return flyweight
             if (cashMoney.isFlyweight()) {
                 return new FlyweightNode();
             }
+            // only $ is left to check if not a flyweight
             else if (!cashMoney.isFlyweight() && cashMoney.isLeaf()) {
                 return cashMoney;
             }
         }   
+        // do not shrink if there is not an only leaf child
         return this;
     }
     
@@ -137,6 +153,7 @@ public class InternalNode implements DNATreeNode {
      */
     public void search(char[] sequence, int level, SequenceSearch curSearch) {
         curSearch.incrementNumOfNodesVisited();
+        // each variation of the node types are called each iteration
         if (level < sequence.length) {
             if (sequence[level] == 'A') {
                 a.search(sequence, level + 1, curSearch);
@@ -151,11 +168,13 @@ public class InternalNode implements DNATreeNode {
                 t.search(sequence, level + 1, curSearch);
             }
         }
-            else if (level == sequence.length) {
+        else if (level == sequence.length) {
+            // if searching for exact match at this point just check $ branch
             if (curSearch.getExactMatch()) {
                 cashMoney.search(sequence, level, curSearch);
             }
             else {
+                //if not exact, search every child
                 a.search(sequence, level, curSearch);
                 c.search(sequence, level, curSearch);
                 g.search(sequence, level, curSearch);
@@ -171,7 +190,9 @@ public class InternalNode implements DNATreeNode {
      * @param stat boolean whether or not to print stats
      */
     public void print(boolean len, boolean stat) {
+        // print out "I" once for this node
         System.out.println("I");
+        // print out as many spaces as depth of node
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
