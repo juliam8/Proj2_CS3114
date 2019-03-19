@@ -98,7 +98,7 @@ public class InternalNode implements DNATreeNode {
         else if (!g.isFlyweight()) {
             if (c.isFlyweight() && t.isFlyweight() &&
                 $.isFlyweight()) {
-                return c;
+                return g;
             }
         }
         else if (!c.isFlyweight()) {
