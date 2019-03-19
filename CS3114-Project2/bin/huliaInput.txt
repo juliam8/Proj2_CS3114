@@ -1,4 +1,4 @@
-print
+
 insert AAAG
 print
 insert AAAT
@@ -6,4 +6,5 @@ insert AAAC
 insert A
 print
 remove AAAG
+
 print
