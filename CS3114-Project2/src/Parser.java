@@ -87,8 +87,6 @@ public class Parser {
         String dna = mScan.next();
         // data is an array that holds the rectangle coordinates
         char[] sequence = dna.toCharArray();
-        // seq is the String cast of sequence
-        String seq = sequence.toString();
         
         if (!validSequence(sequence)) {
             System.out.print("sequence rejected: ");
@@ -100,11 +98,11 @@ public class Parser {
             System.out.print(sequence);
             System.out.println(" already exists");
         } 
-       else {
-           System.out.print("sequence ");
-           System.out.print(sequence);
-           System.out.print(" inserted at level ");
-           mTree.insert(sequence);
+        else {
+            System.out.print("sequence ");
+            System.out.print(sequence);
+            System.out.print(" inserted at level ");
+            mTree.insert(sequence);
         }
     }
 
@@ -163,12 +161,12 @@ public class Parser {
         curSearch.exactMatch = false;
         curSearch.insertCheck = false;
         //get the index of the last element in array
-        int lastChar = sequence.length-1;
+        int lastChar = sequence.length - 1;
         //set boolean to true if it should be an exact match
         if (sequence[lastChar] == '$') {
             curSearch.exactMatch = true;
             //delete the $ symbol from sequence
-            sequence = Arrays.copyOf(sequence, sequence.length-1);
+            sequence = Arrays.copyOf(sequence, sequence.length - 1);
         }
         mTree.search(sequence, curSearch);
         if (!curSearch.sequenceFound) {
@@ -191,10 +189,7 @@ public class Parser {
         
         mTree.search(sequence, curSearch);
         // just checks if sequence already exists
-        if (curSearch.sequenceFound) {
-            return true;
-        }
-        return false;
+        return curSearch.sequenceFound;
     }
 
     /**

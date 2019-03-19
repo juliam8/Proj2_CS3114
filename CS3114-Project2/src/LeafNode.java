@@ -4,25 +4,27 @@ import java.util.Arrays;
  * @author juliam8
  * @author abbym1
  * @version 2019-03-02
- * @param 
- * @param 
  *
  * Leaf Node Object
  * *description*
  */
-public class LeafNode implements DNATreeNode{
+public class LeafNode implements DNATreeNode {
     
+    /**
+     * Constructor for LeafNode class
+     */
     LeafNode() {
         char[] arr = {};
         DNASequence = arr;
         length = 0;
         
     }
+    
     /**
      * Constructor for LeafNode class
      * @param sequence the DNA sequence for this leaf node
      */
-    LeafNode(char[] sequence){
+    LeafNode(char[] sequence) {
         DNASequence = sequence;
         length = sequence.length;
         
@@ -37,15 +39,17 @@ public class LeafNode implements DNATreeNode{
             }
         }
         double newLength = (double) length;
-        percentA = (count[0]*100 / newLength);
-        percentC = (count[1]*100 / newLength);
-        percentG = (count[2]*100 / newLength);
-        percentT = (count[3]*100 / newLength);
+        percentA = (count[0] * 100 / newLength);
+        percentC = (count[1] * 100 / newLength);
+        percentG = (count[2] * 100 / newLength);
+        percentT = (count[3] * 100 / newLength);
     }
     
     /**
+     * Inserts a node below a leaf node
      * @param sequence the DNA sequence to insert
      * @param level the level at which to insert
+     * @param print the boolean that dictates whether to print
      * @return the node that was inserted
      */
     public DNATreeNode insert(char[] sequence, int level, boolean print) {
@@ -61,11 +65,19 @@ public class LeafNode implements DNATreeNode{
        
     }
     
+    /* 
+     * Removes specified sequence
+     * @param sequence the sequence to remove
+     * @param level the level at which it is
+     * @return the DNA node that was removed
+     */
     public DNATreeNode remove(char[] sequence, int level) {
         if(Arrays.equals(sequence, DNASequence)) {
             return new FlyweightNode();
         }
-        else return this;
+        else {
+            return this;
+        }
     }
     
     /**
@@ -92,9 +104,10 @@ public class LeafNode implements DNATreeNode{
     }
     
     /**
-     * Finds a sequence
+     * Finds a sequence within the DNA tree
      * @param sequence the DNA sequence to find
-     * @return true if found
+     * @param level the level at which the node is
+     * @param curSearch the search variables to consider
      */
     //if search sequence has $ at the end, then you
     //only check if that EXACT sequence exists.
@@ -124,24 +137,8 @@ public class LeafNode implements DNATreeNode{
     }
     
     /**
-     * Finds an exact sequence
-     * @param sequence the DNA sequence to find
-     * @param level the level at which it's at
-     * @return true if found
-     */
-    //if search sequence has $ at the end, then you
-    //only check if that EXACT sequence exists.
-    //if it doesn't have that $ at the end, print out all.
-   // public boolean search(char[] sequence, int level) {
-   //     if (Arrays.equals(sequence, DNASequence)) {
-   //         return true;
-   //     }
-   //     return false;
-   // }
-    
-    /**
      * Sets the DNA sequence to a new value
-     * @param sequence
+     * @param sequence the sequence to set
      */
     public void setDNA(char[] sequence) {
         DNASequence = sequence;
@@ -157,7 +154,7 @@ public class LeafNode implements DNATreeNode{
     
     /**
      * Check for if the node is a leaf node
-     * @return
+     * @return a boolean that states that this is a leaf node
      */
     public boolean isLeaf() {
         return true;
@@ -165,7 +162,7 @@ public class LeafNode implements DNATreeNode{
     
     /**
      * Check for if the node is a flyweight node
-     * @return
+     * @return false since a leaf node is not a flyweigh
      */
     public boolean isFlyweight() {
         return false;

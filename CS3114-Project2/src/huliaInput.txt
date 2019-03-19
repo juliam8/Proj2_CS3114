@@ -9,4 +9,3 @@ insert AT
 insert AA
 insert ATT
 
-print

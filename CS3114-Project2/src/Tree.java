@@ -3,8 +3,7 @@
  * @author juliam8
  * @author abbym1
  * @version 2019-03-02
- * @param 
- * @param 
+ * @param <N> the type of node within the tree
  *
  * Tree Object
  * *description*
@@ -15,16 +14,17 @@ public class Tree<N> {
      * Constructor for the Tree class 
      * Sets the root as a flyweight node
      */
-    Tree(){
+    Tree() {
         root = new FlyweightNode();
     }
     
     /**
      * Constructor for the Tree class 
      * Sets the private member variables
+     * @param sequence the sequence to insert
      */
     Tree(char[] sequence) {
-        DNAsequence = sequence;
+        DNASequence = sequence;
         nodeCount = 0;
     }
 
@@ -37,12 +37,11 @@ public class Tree<N> {
     }
 
     /**
-     * Calls insert helper and to increment node count 
-     * @param node the node to insert
-     * @return the level at which the node is inserted
+     * Calls node insert helper and to increment node count 
+     * @param sequence the sequence to insert
      */
     public void insert(char[] sequence) {
-        if( nodeCount == 0) {
+        if (nodeCount == 0) {
             System.out.println(0);
         }
         root = root.insert(sequence, 1, true);
@@ -50,8 +49,8 @@ public class Tree<N> {
     }
     
     /**
-     * @param sequence
-     * @return
+     * Calls node remove helper to remove sequence
+     * @param sequence the dna sequence to remove
      */
     public void remove(char[] sequence) {
         root = root.remove(sequence, 1);
@@ -64,14 +63,16 @@ public class Tree<N> {
      * @param stat boolean whether or not to print stats
      */
     public void print(boolean len, boolean stat) {
-        if (root == null) return;
+        if (root == null) {
+            return;
+        }
         root.print(len, stat);
     }
     
     /**
      * Searches for occurrences of a sequence within the tree
      * @param sequence the sequence to find within the tree
-     * @return returns true if found
+     * @param curSearch the specified variables for this search
      */
     public void search(char[] sequence, SequenceSearch curSearch) {
         root.search(sequence, 0, curSearch);
@@ -106,5 +107,5 @@ public class Tree<N> {
     /**
      * The DNA sequence in the node
      */
-    protected char[] DNAsequence;
+    protected char[] DNASequence;
 }
