@@ -29,7 +29,7 @@ public class ParserTest {
         //should be a flyweight, not null
         assertNotNull(myTree.root());
         
-        File tFile = new File("P2ParserTestFile.txt");
+        File tFile = new File("src//P2ParserTestFile.txt");
         assertNotNull(tFile);
         
         // parse is a Parser object used to interpret the 
@@ -50,7 +50,7 @@ public class ParserTest {
         assertEquals(myTree.nodeCount(), 0);
         assertNotNull(myTree.root());
         
-        File tFile = new File("P2ParserTestFile.txt");
+        File tFile = new File("src//P2ParserTestFile.txt");
         assertNotNull(tFile);
         
         // parse is a Parser object used to interpret the 
