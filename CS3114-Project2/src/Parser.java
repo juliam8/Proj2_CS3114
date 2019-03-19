@@ -51,7 +51,7 @@ public class Parser {
             } 
             else if (command.equals("search")) {
                 char[] sequence = mScan.next().toCharArray();
-                search(sequence, false);
+                search(sequence);
             } 
             else if (command.equals("print")) {
                 print();
@@ -63,7 +63,7 @@ public class Parser {
     /**
      * Checks input DNA sequence for validity
      * @param sequence     Input sequence
-     * @return      True for a valid sequence, else False
+     * @return True for a valid sequence, else False
      */
     private boolean validSequence(char[] sequence) {
         // validChars holds all valid characters for the sequence
@@ -80,25 +80,22 @@ public class Parser {
     }
     
     /**
-     * Method to execute the BST insert command 
-     * Accepts or rejects the input rectangle based on 0,0 1024,1024 bounds
+     * Method to execute the DNA tree insert command 
      */
     private void insert() {
         // dna is the name of the sequence to insert
         String dna = mScan.next();
         // data is an array that holds the rectangle coordinates
         char[] sequence = dna.toCharArray();
-        //seq is the String cast of sequence
+        // seq is the String cast of sequence
         String seq = sequence.toString();
-        
-        //DNATreeNode newNode;
-        //newNode = new LeafNode(sequence);
         
         if (!validSequence(sequence)) {
             System.out.print("sequence rejected: ");
             System.out.print(sequence);
         }
-        else if (search(sequence, true)) {
+        // cannot insert same sequence twice
+        else if (checkIfExists(sequence)) {
             System.out.print("sequence ");
             System.out.print(sequence);
             System.out.println(" already exists");
@@ -121,12 +118,13 @@ public class Parser {
         // data is an array that holds the rectangle coordinates
         char[] sequence = dna.toCharArray();
        // DNATreeNode temp = null;// = mTree.remove(sequence);
-        boolean found = search(sequence, true);
-        if(found) {
+        boolean found = checkIfExists(sequence);
+        if (found) {
             mTree.remove(sequence);
             System.out.print("sequence " + dna );
             System.out.println(" removed");
         }
+        //only remove if it exists
         else {
             System.out.print("sequence " + dna );
             System.out.println(" does not exist");
@@ -141,10 +139,12 @@ public class Parser {
         
         if (mScan.hasNext("lengths")) {
             mScan.next();
+            //first boolean set if wanting to print the sequence length
             mTree.print(true, false);
         }
         else if (mScan.hasNext("stats")) {
             mScan.next();
+            //second boolean set if wanting to print percentages
             mTree.print(false, true);
         }
         else {
@@ -153,32 +153,44 @@ public class Parser {
     }
     
     /**
-     * Search for a sequence within tree
+     * Searches for a sequence within tree
+     * @param sequence the DNA sequence to search for
      */
-    private boolean search(char[] sequence, boolean insertCheck) {
+    private void search(char[] sequence) {
+        //instance of class holding search members
         SequenceSearch curSearch = new SequenceSearch();
         curSearch.sequenceFound = false;
         curSearch.exactMatch = false;
         curSearch.insertCheck = false;
+        //get the index of the last element in array
         int lastChar = sequence.length-1;
+        //set boolean to true if it should be an exact match
         if (sequence[lastChar] == '$') {
             curSearch.exactMatch = true;
+            //delete the $ symbol from sequence
             sequence = Arrays.copyOf(sequence, sequence.length-1);
         }
-        if (insertCheck) {
-            curSearch.exactMatch = true;
-            curSearch.insertCheck = true;
+        mTree.search(sequence, curSearch);
+        if (!curSearch.sequenceFound) {
+            System.out.println("no sequence found");
         }
+        System.out.print("# of nodes visited: ");
+        System.out.println(curSearch.getNumberOfNodesVisited());
+    }
+    
+    /**
+     * Checks if a sequence exists within tree
+     * @param sequence the sequence to check for existence
+     * @return a boolean that is set if sequence exists
+     */
+    private boolean checkIfExists(char[] sequence) {
+        SequenceSearch curSearch = new SequenceSearch();
+        curSearch.sequenceFound = false;
+        curSearch.exactMatch = true;
+        curSearch.insertCheck = true;
         
         mTree.search(sequence, curSearch);
-        
-        if (!insertCheck) {
-            if (!curSearch.sequenceFound) {
-                System.out.println("no sequence found");
-            }
-            System.out.print("# of nodes visited: ");
-            System.out.println(curSearch.getNumberOfNodesVisited());
-        }
+        // just checks if sequence already exists
         if (curSearch.sequenceFound) {
             return true;
         }
