@@ -151,7 +151,7 @@ public class InternalNode implements DNATreeNode {
                 t.search(sequence, level + 1, curSearch);
             }
         }
-        else if (level == sequence.length) {
+            else if (level == sequence.length) {
             if (curSearch.getExactMatch()) {
                 cashMoney.search(sequence, level, curSearch);
             }

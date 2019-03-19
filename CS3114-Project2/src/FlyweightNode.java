@@ -4,8 +4,10 @@
  * @author abbym1
  * @version 2019-03-02
  * 
- * Flyweight Node Object
- * *description*
+ *              Flyweight Node Object
+ *  This node type stores no data or children
+ *  All flyweight nodes in the tree are references
+ *  to the same object
  */
 public class FlyweightNode implements DNATreeNode {
     
@@ -13,7 +15,7 @@ public class FlyweightNode implements DNATreeNode {
      * Constructor for FlyweightNode class
      */
     FlyweightNode() {
-        //empty because no variables need to be set
+        // empty because no variables need to be set
     }
     
     /**
@@ -24,9 +26,6 @@ public class FlyweightNode implements DNATreeNode {
      * @return the new node 
      */
     public DNATreeNode insert(char[] sequence, int level, boolean print) {
-        //System.out.println(level - 1);
-        //LeafNode n = new LeafNode();
-        //return n.insert(sequence, 0);
         return new LeafNode(sequence);
     }
     

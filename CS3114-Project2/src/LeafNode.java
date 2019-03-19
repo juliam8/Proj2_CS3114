@@ -6,24 +6,16 @@ import java.util.Arrays;
  * @version 2019-03-02
  *
  *          Leaf Node Object
- *          *description*
+ *   This type of node stores the dna sequence
+ *   information and has no children
  */
 public class LeafNode implements DNATreeNode {
 
     /**
      * Constructor for LeafNode class
-     */
-    // LeafNode() {
-    // char[] arr = {};
-    // dnaSequence = arr;
-    // length = 0;
-    // }
-
-    /**
-     * Constructor for LeafNode class
      * 
      * @param sequence
-     *            the DNA sequence for this leaf node
+     *  the DNA sequence for this leaf node
      */
     LeafNode(char[] sequence) {
         dnaSequence = sequence;
@@ -32,6 +24,7 @@ public class LeafNode implements DNATreeNode {
         char[] letters = "ACGT".toCharArray();
         int[] count = new int[4];
 
+        // calculate the statistics for the sequence
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < 4; j++) {
                 if (sequence[i] == letters[j]) {
@@ -51,23 +44,21 @@ public class LeafNode implements DNATreeNode {
      * Inserts a node below a leaf node
      * 
      * @param sequence
-     *            the DNA sequence to insert
+     *  the DNA sequence to insert
      * @param level
-     *            the level at which to insert
+     *  the level at which to insert
      * @param print
-     *            the boolean that dictates whether to print
+     *  the boolean that dictates whether to print
      * @return the node that was inserted
      */
     public DNATreeNode insert(char[] sequence, int level, boolean print) {
 
-        // if(length != 0) {
+        // create an internal node and insert both the 
+        // leaf node and new sequences
         InternalNode n = new InternalNode();
         n.insert(dnaSequence, level, false);
         n.insert(sequence, level, true);
         return n;
-        // }
-
-        // return new LeafNode(sequence);
 
     }
 
@@ -76,12 +67,13 @@ public class LeafNode implements DNATreeNode {
      * Removes specified sequence
      * 
      * @param sequence
-     *            the sequence to remove
+     *  the sequence to remove
      * @param level
-     *            the level at which it is
+     *  the level at which it is
      * @return the DNA node that was removed
      */
     public DNATreeNode remove(char[] sequence, int level) {
+        // if you have found the matching sequence, remove it
         if (Arrays.equals(sequence, dnaSequence)) {
             return new FlyweightNode();
         }
@@ -92,12 +84,12 @@ public class LeafNode implements DNATreeNode {
 
 
     /**
-     * Prints out an Leaf Node key
+     * Prints out a Leaf Node key
      * 
      * @param len
-     *            boolean whether or not to print length
+     *  boolean whether or not to print length
      * @param stat
-     *            boolean whether or not to print stats
+     *  boolean whether or not to print stats
      */
     public void print(boolean len, boolean stat) {
         System.out.print(dnaSequence);
@@ -122,11 +114,11 @@ public class LeafNode implements DNATreeNode {
      * Finds a sequence within the DNA tree
      * 
      * @param sequence
-     *            the DNA sequence to find
+     *  the DNA sequence to find
      * @param level
-     *            the level at which the node is
+     *  the level at which the node is
      * @param curSearch
-     *            the search variables to consider
+     *  the search variables to consider
      */
     // if search sequence has $ at the end, then you
     // only check if that EXACT sequence exists.
@@ -135,6 +127,7 @@ public class LeafNode implements DNATreeNode {
         curSearch.incrementNumOfNodesVisited();
 
         if (!curSearch.getExactMatch()) {
+            // you are looking for all dna sequences starting with input
             char[] subArray;
             subArray = Arrays.copyOfRange(dnaSequence, 0, sequence.length);
             if (Arrays.equals(sequence, subArray)) {
@@ -144,10 +137,12 @@ public class LeafNode implements DNATreeNode {
             }
         }
         else {
+            // you are only looking for an exact match
             if (Arrays.equals(sequence, dnaSequence)) {
                 curSearch.setSequenceFound(true);
 
                 if (!curSearch.getInsertCheck()) {
+                    // only prints when the print command is called
                     System.out.print("sequence: ");
                     System.out.println(dnaSequence);
                 }
@@ -159,8 +154,7 @@ public class LeafNode implements DNATreeNode {
     /**
      * Sets the DNA sequence to a new value
      * 
-     * @param sequence
-     *            the sequence to set
+     * @param sequence the sequence to set
      */
     public void setDNA(char[] sequence) {
         dnaSequence = sequence;
