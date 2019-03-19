@@ -162,7 +162,6 @@ public class InternalNode implements DNATreeNode {
                 t.search(sequence, level, curSearch);
                 cashMoney.search(sequence, level, curSearch);
             }
-           // cashMoney.search(sequence, level, curSearch);
         }
     }
 
