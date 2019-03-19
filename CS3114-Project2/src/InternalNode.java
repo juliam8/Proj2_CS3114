@@ -4,13 +4,15 @@
  * @author abbym1
  * @version 2019-03-02
  *
- * Internal Node Object
- * Object that holds members corresponding to an internal node
- *      within the DNA tree
+ *          Internal Node Object
+ *          This type of node stores the null pointer
+ *          which every empty node points to. This has
+ *          no children.
+ *          Implements the DNA Tree Node Interface
  */
 
 public class InternalNode implements DNATreeNode {
-    
+
     /**
      * Default Constructor
      * Sets all child pointers to the flyweight
@@ -22,17 +24,22 @@ public class InternalNode implements DNATreeNode {
         t = new FlyweightNode();
         cashMoney = new FlyweightNode();
     }
-    
+
+
     /**
      * Inserts a node at a certain level
-     * @param sequence the DNA sequence to insert
-     * @param level the level at which the node is
-     * @param print whether or not to print the inserted level
+     * 
+     * @param sequence
+     *            the DNA sequence to insert
+     * @param level
+     *            the level at which the node is
+     * @param print
+     *            whether or not to print the inserted level
      * @return DNATreeNode that was inserted
      */
     public DNATreeNode insert(char[] sequence, int level, boolean print) {
-        //set nodeLevel insertion for printing space purposes
-        nodeLevel = level; 
+        // set nodeLevel insertion for printing space purposes
+        nodeLevel = level;
         if (level - 1 == sequence.length) {
             // create a new node, n, if lowest possible depth is reached
             LeafNode n = new LeafNode(sequence);
@@ -41,9 +48,9 @@ public class InternalNode implements DNATreeNode {
             }
             setCashMoney(n);
         }
-        // only print level if that is the place of insertion which is 
-        //      dictated by whether the destination is a flyweight
-        else if (sequence[level - 1] == 'A') {    
+        // only print level if that is the place of insertion which is
+        // dictated by whether the destination is a flyweight
+        else if (sequence[level - 1] == 'A') {
             if (a.isFlyweight() && print) {
                 System.out.println(level);
             }
@@ -67,14 +74,18 @@ public class InternalNode implements DNATreeNode {
             }
             setT(t.insert(sequence, level + 1, print));
         }
-        //return the altered tree
+        // return the altered tree
         return this;
     }
-    
+
+
     /**
      * Traverses down to find leaf node to remove
-     * @param sequence the sequence to remove
-     * @param level the level at which the search is
+     * 
+     * @param sequence
+     *            the sequence to remove
+     * @param level
+     *            the level at which the search is
      * @return the removed DNA tree node
      */
     public DNATreeNode remove(char[] sequence, int level) {
@@ -98,31 +109,31 @@ public class InternalNode implements DNATreeNode {
         // check if the tree needs to be shrunk after removing the node
         return shrinkCheck();
     }
-    
+
+
     /**
      * Shrinks the tree according to if there is one non flyweight
+     * 
      * @return the DNA tree node that needs to be shrunk
      */
     private DNATreeNode shrinkCheck() {
         // return A child if a leaf and other children are flyweights
         if (!a.isFlyweight()) {
-            if (g.isFlyweight() && c.isFlyweight() &&
-                t.isFlyweight() && cashMoney.isFlyweight()
-                && a.isLeaf()) {
+            if (g.isFlyweight() && c.isFlyweight() && t.isFlyweight()
+                && cashMoney.isFlyweight() && a.isLeaf()) {
                 return a;
             }
         }
         // return G child if a leaf and rest are flyweights
         else if (!g.isFlyweight()) {
-            if (c.isFlyweight() && t.isFlyweight() &&
-                cashMoney.isFlyweight() && g.isLeaf()) {
+            if (c.isFlyweight() && t.isFlyweight() && cashMoney.isFlyweight()
+                && g.isLeaf()) {
                 return g;
             }
         }
         // return C child if a leaf and rest are flyweights
         else if (!c.isFlyweight()) {
-            if (t.isFlyweight() && cashMoney.isFlyweight()
-                && c.isLeaf()) {
+            if (t.isFlyweight() && cashMoney.isFlyweight() && c.isLeaf()) {
                 return c;
             }
         }
@@ -141,16 +152,21 @@ public class InternalNode implements DNATreeNode {
             else if (!cashMoney.isFlyweight() && cashMoney.isLeaf()) {
                 return cashMoney;
             }
-        }   
+        }
         // do not shrink if there is not an only leaf child
         return this;
     }
-    
+
+
     /**
      * Finds a sequence
-     * @param sequence the DNA sequence to find
-     * @param level the level at which the search is
-     * @param curSearch the search variables for this instance
+     * 
+     * @param sequence
+     *            the DNA sequence to find
+     * @param level
+     *            the level at which the search is
+     * @param curSearch
+     *            the search variables for this instance
      */
     public void search(char[] sequence, int level, SequenceSearch curSearch) {
         curSearch.incrementNumOfNodesVisited();
@@ -175,7 +191,7 @@ public class InternalNode implements DNATreeNode {
                 cashMoney.search(sequence, level, curSearch);
             }
             else {
-                //if not exact, search every child
+                // if not exact, search every child
                 a.search(sequence, level, curSearch);
                 c.search(sequence, level, curSearch);
                 g.search(sequence, level, curSearch);
@@ -185,10 +201,14 @@ public class InternalNode implements DNATreeNode {
         }
     }
 
+
     /**
      * Prints out an Internal Node key
-     * @param len boolean whether or not to print length
-     * @param stat boolean whether or not to print stats
+     * 
+     * @param len
+     *            boolean whether or not to print length
+     * @param stat
+     *            boolean whether or not to print stats
      */
     public void print(boolean len, boolean stat) {
         // print out "I" once for this node
@@ -198,131 +218,158 @@ public class InternalNode implements DNATreeNode {
             System.out.print("  ");
         }
         a.print(len, stat);
-        
+
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
         c.print(len, stat);
-        
+
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
         g.print(len, stat);
-        
+
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
         t.print(len, stat);
-        
+
         for (int i = 0; i < nodeLevel; i++) {
             System.out.print("  ");
         }
         cashMoney.print(len, stat);
     }
-    
+
+
     /**
      * Setter for A child
-     * @param inA the DNA tree node to set as the A child
+     * 
+     * @param inA
+     *            the DNA tree node to set as the A child
      */
     public void setA(DNATreeNode inA) {
         a = inA;
     }
-    
+
+
     /**
      * Setter for G child
-     * @param inG the DNA tree node to set as the G child
+     * 
+     * @param inG
+     *            the DNA tree node to set as the G child
      */
     public void setG(DNATreeNode inG) {
         g = inG;
     }
-    
+
+
     /**
      * Setter for C child
-     * @param inC the DNA tree node to set as the C child
+     * 
+     * @param inC
+     *            the DNA tree node to set as the C child
      */
     public void setC(DNATreeNode inC) {
         c = inC;
     }
-    
+
+
     /**
      * Setter for T child
-     * @param inT the DNA tree node to set as the T child
+     * 
+     * @param inT
+     *            the DNA tree node to set as the T child
      */
     public void setT(DNATreeNode inT) {
         t = inT;
     }
 
+
     /**
      * Setter for cashMoney child
-     * @param inCashMoney the DNA tree node to set as the cashMoney child
+     * 
+     * @param inCashMoney
+     *            the DNA tree node to set as the cashMoney child
      */
     public void setCashMoney(DNATreeNode inCashMoney) {
         cashMoney = inCashMoney;
     }
-    
-    
+
+
     /**
      * Getter for a child
-     * @return DNATreeNode a 
+     * 
+     * @return DNATreeNode a
      */
     public DNATreeNode a() {
         return a;
     }
-    
+
+
     /**
      * Getter for g child
-     * @return DNATreeNode g 
+     * 
+     * @return DNATreeNode g
      */
     public DNATreeNode g() {
         return g;
     }
-        
+
+
     /**
      * Getter for c child
+     * 
      * @return DNATreeNode c
      */
     public DNATreeNode c() {
         return c;
     }
-    
+
+
     /**
      * Getter for t child
+     * 
      * @return DNATreeNode t
      */
     public DNATreeNode t() {
         return t;
     }
-    
+
+
     /**
      * Getter for cashMoney child
+     * 
      * @return DNATreeNode t
      */
     public DNATreeNode getCashMoney() {
         return cashMoney;
     }
-    
-    
+
+
     /**
      * This is an internal node, not a leaf
+     * 
      * @return false
      */
     public boolean isLeaf() {
         return false;
     }
-    
+
+
     /**
      * This is an internal node, not a flyweight
+     * 
      * @return false
      */
     public boolean isFlyweight() {
         return false;
     }
-    
+
     /**
      * Stores the level of the node
      */
     private int nodeLevel;
-    
+
     /**
      * Stores the a branch of the node
      */

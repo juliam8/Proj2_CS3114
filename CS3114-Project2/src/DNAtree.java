@@ -28,7 +28,25 @@ import java.io.FileNotFoundException;
  * @author abbym1 - Abagale Malone (abbym1@vt.edu)
  * @author juliam8 - Julia Mahon Kuzin (juliam8@vt.edu)
  * @version 2019-03-02
- *          This is the main class for CS3114 P2
+ *          This is the main class for CS3114 Project 2
+ *          
+ *          This program runs commands that operate on a DNA
+ *          tree. The DNA tree holds DNA sequences consisting of 
+ *          A, C, T, and G, and these sequences can be as long or
+ *          short as needed. The internal nodes within the tree
+ *          have five children, being the A, C, T, G, and cashMoney
+ *          children. For a node to be stored in the cashMoney child, 
+ *          its sequence must exactly match its path. Valid commands 
+ *          are insert, remove, search, print, print lengths, and 
+ *          print stats. There is a singular interface from which 
+ *          all three types of nodes inherit from. The types of nodes 
+ *          are internal nodes, leaf nodes, and flyweight nodes. Leaf 
+ *          nodes hold the actual DNA sequences, internal nodes 
+ *          have pointers to each of the five children, and 
+ *          flyweight nodes are null. Each flyweight node points 
+ *          to the same null node as to not take up unnecessary 
+ *          space within the program.        
+ *          
  */
 
 public class DNAtree {
