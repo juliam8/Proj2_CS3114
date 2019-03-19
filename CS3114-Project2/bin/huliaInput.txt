@@ -1,14 +1,5 @@
 
-insert AAAAG
-insert AAAAT
-insert C
-insert AAAAA
-print
-remove AAAAA
-print
-remove AAAAT
-print
-remove C
-print
-remove AAAAG
+insert ACGTT
+insert ACGT
+search ACGT
 print

@@ -11,8 +11,8 @@ import org.junit.Test;
  * @author abbym1
  * @version 2019-03-02
  * 
- * Flyweight Node Test Object
- * *description*
+ *          Flyweight Node Test Object
+ *          *description*
  */
 public class FlyweightNodeTest {
 

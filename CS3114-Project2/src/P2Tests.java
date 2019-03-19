@@ -9,8 +9,8 @@ import org.junit.runners.Suite.SuiteClasses;
  *
  */
 @RunWith(Suite.class)
-@SuiteClasses({ FlyweightNodeTest.class, ParserTest.class, LeafNodeTest.class, 
-                InternalNodeTest.class, DNAtreeTest.class})
+@SuiteClasses({ FlyweightNodeTest.class, ParserTest.class, LeafNodeTest.class,
+    InternalNodeTest.class, DNAtreeTest.class })
 public class P2Tests {
 
 }
