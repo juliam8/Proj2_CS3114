@@ -38,25 +38,25 @@ public class InternalNode implements DNATreeNode {
             set$(n);
         }
         else if (sequence[level-1] == 'A') {
-            if(a.isFlyweight() && print) {
+            if (a.isFlyweight() && print) {
                 System.out.println(level);
             }
             setA(a.insert(sequence, level + 1, print));
         }
         else if (sequence[level-1] == 'C') {
-            if(c.isFlyweight() && print) {
+            if (c.isFlyweight() && print) {
                 System.out.println(level);
             }
             setC(c.insert(sequence, level + 1, print));
         }
         else if (sequence[level-1] == 'G') {
-            if(g.isFlyweight() && print) {
+            if (g.isFlyweight() && print) {
                 System.out.println(level);
             }
             setG(g.insert(sequence, level + 1, print));
         }
         else if (sequence[level-1] == 'T') {
-            if(t.isFlyweight() && print) {
+            if (t.isFlyweight() && print) {
                 System.out.println(level);
             }
             setT(t.insert(sequence, level + 1, print));
@@ -96,7 +96,7 @@ public class InternalNode implements DNATreeNode {
         else if (!g.isFlyweight()) {
             if (c.isFlyweight() && t.isFlyweight() &&
                 $.isFlyweight()) {
-                return c;
+                return g;
             }
         }
         else if (!c.isFlyweight()) {
