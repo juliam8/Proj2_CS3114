@@ -93,7 +93,11 @@ public class LeafNode implements DNATreeNode {
      *  boolean whether or not to print stats
      */
     public void print(boolean len, boolean stat) {
+        // always print the sequence
         System.out.print(dnaSequence);
+        
+        // print the length or statistics only if the 
+        // corresponding booleans have been set
         if (len) {
             System.out.print(" " + length);
         }

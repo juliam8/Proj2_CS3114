@@ -5,8 +5,15 @@
  * @version 2019-03-02
  * @param <N> the type of node within the tree
  *
- * Tree Object
- * *description*
+ *       Tree Object
+ * This object represents a search tree with five children,
+ * whose leaf nodes store char arrays representing DNA 
+ * sequences. The nodes are created using an interface
+ * (inheritance) of DNA Tree Nodes. A flyweight is used
+ * for empty leaf nodes to save space. 
+ * 
+ * Each Tree Object has a root node and a count of how
+ * many nodes are in the tree.
  */
 public class Tree<N> {
     
@@ -89,8 +96,4 @@ public class Tree<N> {
      */
     protected int nodeCount;   
     
-    /**
-     * The DNA sequence in the node
-     */
-    protected char[] dnaSequence;
 }
