@@ -366,6 +366,4 @@ public class InternalNodeTest {
         assertTrue(n.$().isFlyweight());
     }
 
-    
-
 }

@@ -1,17 +1,6 @@
-insert AG
-insert AGG
-insert CTC
-insert CCCCCGGGGTTT
-insert CCCCC
-insert A
-insert TA
-insert TAA
-insert AT
-insert AA
-insert ATT
-insert T
-insert C
-insert GT
-insert G
 
-print stats
+insert AAAAG
+insert AAAAC
+print
+remove AAAAC
+print
