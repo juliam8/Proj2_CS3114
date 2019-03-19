@@ -1,6 +1,8 @@
 insert ACGT     
-insert ACGT
-insert AC
+insert AG
+insert AGG
+insert CTC
+insert CTCT
 insert A
 insert TA
 insert TAA
