@@ -72,7 +72,7 @@ public class LeafNode implements DNATreeNode {
      * @return the DNA node that was removed
      */
     public DNATreeNode remove(char[] sequence, int level) {
-        if(Arrays.equals(sequence, DNASequence)) {
+        if (Arrays.equals(sequence, DNASequence)) {
             return new FlyweightNode();
         }
         else {

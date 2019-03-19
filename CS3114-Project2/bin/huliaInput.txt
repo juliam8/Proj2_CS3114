@@ -1,6 +1,7 @@
 
-insert AAAAG
-insert AAAAC
+insert A
 print
-remove AAAAC
+insert T
+print
+remove T
 print
