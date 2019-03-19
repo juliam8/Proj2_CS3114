@@ -1,7 +1,6 @@
 
-insert A
 print
-insert T
-print
-remove T
+insert AAAAG
+print 
+remove AAAAG
 print
