@@ -5,7 +5,8 @@
  * @version 2019-03-02
  *
  * Internal Node Object
- * *description*
+ * Object that holds members corresponding to an internal node
+ *      within the DNA tree
  */
 
 public class InternalNode implements DNATreeNode {

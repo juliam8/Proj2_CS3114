@@ -12,7 +12,7 @@ import org.junit.Test;
  * @version 2019-03-02
  * 
  *          Internal Node Test Object
- *          *description*
+ *          Testing file for internal node class
  */
 public class InternalNodeTest {
 
