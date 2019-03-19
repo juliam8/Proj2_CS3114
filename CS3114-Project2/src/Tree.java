@@ -18,15 +18,6 @@ public class Tree<N> {
         root = new FlyweightNode();
     }
     
-    /**
-     * Constructor for the Tree class 
-     * Sets the private member variables
-     * @param sequence the sequence to insert
-     */
-    //Tree(char[] sequence) {
-    //    dnaSequence = sequence;
-    //    nodeCount = 0;
-    //}
 
     /**
      * Clears the elements of the DNA Tree
@@ -41,9 +32,6 @@ public class Tree<N> {
      * @param sequence the sequence to insert
      */
     public void insert(char[] sequence) {
-        if (nodeCount == 0) {
-            System.out.println(0);
-        }
         root = root.insert(sequence, 1, true);
         nodeCount++;
     }
