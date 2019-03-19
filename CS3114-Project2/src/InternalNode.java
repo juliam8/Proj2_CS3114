@@ -91,30 +91,38 @@ public class InternalNode implements DNATreeNode {
         if (!a.isFlyweight()) {
             if (g.isFlyweight() && c.isFlyweight() &&
                t.isFlyweight() && $.isFlyweight()) {
-                return a;
+                if (a.isLeaf()) {
+                    return a;
+                }
             }
         }
         else if (!g.isFlyweight()) {
             if (c.isFlyweight() && t.isFlyweight() &&
                 $.isFlyweight()) {
-                return g;
+                if (g.isLeaf()) {
+                    return g;
+                }
             }
         }
         else if (!c.isFlyweight()) {
             if (t.isFlyweight() && $.isFlyweight()) {
-                return c;
+                if (c.isLeaf()) {
+                    return c;
+                }
             }
         }
         else if (!t.isFlyweight()) {
             if($.isFlyweight()) {
-                return t;
+                if (t.isLeaf()) {
+                    return t;
+                }
             }
         }
         else {
             if ($.isFlyweight()) {
                 return new FlyweightNode();
             }
-            else {
+            else if (!$.isFlyweight() && $.isLeaf()){
                 return $;
             }
         }
