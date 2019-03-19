@@ -34,7 +34,8 @@ public class InternalNode implements DNATreeNode {
         nodeLevel = level;
         if (level-1 == sequence.length) {
             LeafNode n = new LeafNode(sequence);
-            System.out.println(level);
+            if(print)
+                System.out.println(level);
             set$(n);
         }
         else if (sequence[level-1] == 'A') {

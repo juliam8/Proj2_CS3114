@@ -1,10 +1,8 @@
 
-insert AAAG
+insert AAAAG
+insert ACGT
+insert AT 
+insert ATC
 print
-insert AAAT
-insert AAAC
-insert A
-print
-remove AAAG
-
-print
+insert TC
+insert TCC
