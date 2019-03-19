@@ -161,6 +161,11 @@ public class Parser {
         curSearch.exactMatch = false;
         int lastChar = sequence.length-1;
         if (sequence[lastChar] == '$' || insertCheck) {
+            if (sequence[lastChar] == '$') {
+                String str = sequence.toString();
+                String newStr = str.substring(0, lastChar-1);
+                sequence = newStr.toCharArray();
+            }
             curSearch.exactMatch = true;
         }
         mTree.search(sequence, curSearch);
