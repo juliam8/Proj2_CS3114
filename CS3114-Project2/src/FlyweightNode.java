@@ -82,7 +82,7 @@ public class FlyweightNode implements DNATreeNode {
     public boolean isFlyweight() {
         return true;
     }
-    
+        
     /**
      * Private member variable for Flyweight node
      */

@@ -81,10 +81,7 @@ public class InternalNode implements DNATreeNode {
         else if (sequence[level-1] == 'T') {
             setT(t.remove(sequence, level + 1));
         }
-        //if(level != 1)
-            return shrinkCheck();
-        //else
-         //   return this;
+        return shrinkCheck();
     }
     
     private DNATreeNode shrinkCheck() {
@@ -125,7 +122,7 @@ public class InternalNode implements DNATreeNode {
             else if (!$.isFlyweight() && $.isLeaf()){
                 return $;
             }
-        }
+        }   
         return this;
     }
     
