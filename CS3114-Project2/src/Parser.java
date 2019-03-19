@@ -161,11 +161,12 @@ public class Parser {
         curSearch.exactMatch = false;
         curSearch.insertCheck = false;
         int lastChar = sequence.length-1;
-        if (sequence[lastChar] == '$' || insertCheck) {
+        if (sequence[lastChar] == '$') {
             curSearch.exactMatch = true;
             sequence = Arrays.copyOf(sequence, sequence.length-1);
         }
         if (insertCheck) {
+            curSearch.exactMatch = true;
             curSearch.insertCheck = true;
         }
         
