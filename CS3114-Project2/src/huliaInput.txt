@@ -1,23 +1,10 @@
-insert ACGT     
-    
-
 
  insert            AAAA   
  insert AA
-insert                 AAACCCCGGTGAAAACGTA
-insert       ACTGGGAA  
-insert       ACTGGGAA          
-
-remove       ACGT         
+    
 
 insert ACCTT
-insert ACTTA
+
+ search AA$
  
- print
- 
- insert TATA
- insert TCG
- 
- print lengths
- print stats
  

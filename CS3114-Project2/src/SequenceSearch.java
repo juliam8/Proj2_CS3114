@@ -32,6 +32,11 @@ public class SequenceSearch {
     public boolean exactMatch;
     
     /**
+     * Is set based on whether the search is for the insert method
+     */
+    public boolean insertCheck;
+    
+    /**
      * Is set based on whether a sequence is found
      */
     public boolean sequenceFound;
