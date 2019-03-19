@@ -1,14 +1,7 @@
+insert A
 insert T
-insert TA
+remove A
 print
-search A
+print lengths
+print stats
 search T
-search T$
-search TA
-search TA$
-remove TA
-search A
-search T
-search T$
-search TA
-search TA$

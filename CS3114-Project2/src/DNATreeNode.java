@@ -4,8 +4,13 @@
  * @author abbym1
  * @version 2019-03-02
  *
- * DNA Node Object
- * *description*
+ *        DNA Node Object
+ * This is the interface which LeafNode, InternalNode,
+ * and FlyweightNode all implement. It enables us to 
+ * use inheritance in the DNA tree by allowing the 
+ * root to be of type DNATreeNode and thus could be
+ * an internal, leaf, or flyweight node depending on
+ * what is inserted into the tree.
  */
 public interface DNATreeNode {
     

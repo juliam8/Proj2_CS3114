@@ -8,6 +8,7 @@ import java.util.Arrays;
  *          Leaf Node Object
  *   This type of node stores the dna sequence
  *   information and has no children
+ *   Implements the DNA Tree Node Interface
  */
 public class LeafNode implements DNATreeNode {
 
