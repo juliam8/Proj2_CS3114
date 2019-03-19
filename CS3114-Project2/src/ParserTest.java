@@ -14,7 +14,7 @@ import org.junit.Test;
  * @version 2019-03-02
  * 
  * Parser Test Object
- * *description*
+ * Testing file for the parser object
  */
 public class ParserTest {
 
