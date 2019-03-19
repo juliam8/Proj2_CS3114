@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 insert AAAAT
+=======
+
+insert AAAAG
+insert AAAAC
+print
+remove AAAAC
+>>>>>>> 231ef1a4e9b24f4dd18bee7d74fe2e16f805d1bf
 print
 insert AAAAG
 print 
