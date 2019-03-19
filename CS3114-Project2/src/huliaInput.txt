@@ -1,12 +1,5 @@
-insert AG
-insert AGG
-insert CTC
-insert CTCT
-insert A
-insert TA
-insert TAA
-insert AT
-insert AA
-insert ATT
-
+insert AAAAG
+insert AAAAC
+print
+remove AAAAC
 print
