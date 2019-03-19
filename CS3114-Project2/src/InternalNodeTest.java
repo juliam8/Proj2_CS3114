@@ -11,8 +11,8 @@ import org.junit.Test;
  * @author abbym1
  * @version 2019-03-02
  * 
- * Internal Node Test Object
- * *description*
+ *          Internal Node Test Object
+ *          *description*
  */
 public class InternalNodeTest {
 

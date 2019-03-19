@@ -152,11 +152,17 @@ public class InternalNode implements DNATreeNode {
             }
         }
         else if (level == sequence.length) {
-            a.search(sequence, level, curSearch);
-            c.search(sequence, level, curSearch);
-            g.search(sequence, level, curSearch);
-            t.search(sequence, level, curSearch);
-            cashMoney.search(sequence, level, curSearch);
+            if (curSearch.getExactMatch()) {
+                cashMoney.search(sequence, level, curSearch);
+            }
+            else {
+                a.search(sequence, level, curSearch);
+                c.search(sequence, level, curSearch);
+                g.search(sequence, level, curSearch);
+                t.search(sequence, level, curSearch);
+                cashMoney.search(sequence, level, curSearch);
+            }
+           // cashMoney.search(sequence, level, curSearch);
         }
     }
 
