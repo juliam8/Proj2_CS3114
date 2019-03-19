@@ -22,7 +22,6 @@ public class InternalNode implements DNATreeNode {
         c = new FlyweightNode();
         t = new FlyweightNode();
         $ = new FlyweightNode();
-        canShrink = true;
     }
     
     /**
@@ -82,52 +81,37 @@ public class InternalNode implements DNATreeNode {
         else if (sequence[level-1] == 'T') {
             setT(t.remove(sequence, level + 1));
         }
-        //if(canShrink)
-            return shrinkCheck();
-        //else
-         //   return this;
+        return shrinkCheck();
     }
     
     private DNATreeNode shrinkCheck() {
         if (!a.isFlyweight()) {
-            if (a.canShrink() && g.isFlyweight() && c.isFlyweight() &&
+            if (g.isFlyweight() && c.isFlyweight() &&
                t.isFlyweight() && $.isFlyweight()) {
                 return a;
-            }
-            else {
-                canShrink = false;
-            }
-                
+            }                
         }
         else if (!g.isFlyweight()) {
             if (c.isFlyweight() && t.isFlyweight() &&
-                g.canShrink() && $.isFlyweight()) {
+                $.isFlyweight()) {
                 return g;
             }
-            else
-                canShrink = false;
         }
         else if (!c.isFlyweight()) {
-            if (t.isFlyweight() && $.isFlyweight()
-                    && c.canShrink()) {
+            if (t.isFlyweight() && $.isFlyweight()) {
                 return c;
             }
-            else
-                canShrink = false;
         }
         else if (!t.isFlyweight()) {
-            if($.isFlyweight() && t.canShrink()) {
+            if($.isFlyweight()) {
                 return t;
             }
-            else
-                canShrink = false;
         }
         else {
             if ($.isFlyweight()) {
                 return new FlyweightNode();
             }
             else {
-                canShrink = true;
                 return $;
             }
         }   
@@ -293,11 +277,6 @@ public class InternalNode implements DNATreeNode {
         return false;
     }
     
-    public boolean canShrink() {
-        return canShrink;
-    }
-    
-    private boolean canShrink;
     /**
      * Stores the level of the node
      */

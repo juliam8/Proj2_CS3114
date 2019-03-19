@@ -200,17 +200,12 @@ public class LeafNode implements DNATreeNode {
         return percentT;
     }
     
-    public boolean canShrink() {
-        return false;
-    }
-    
     /**
      * Member variable that holds the DNA sequence of the node
      */
     private char[] DNASequence;
     
     private int length;
-    private boolean canShrink;
     private double percentA;
     private double percentC;
     private double percentG;
