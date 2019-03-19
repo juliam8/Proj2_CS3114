@@ -24,7 +24,7 @@ public class Tree<N> {
      * @param sequence the sequence to insert
      */
     Tree(char[] sequence) {
-        DNASequence = sequence;
+        dnaSequence = sequence;
         nodeCount = 0;
     }
 
@@ -107,5 +107,5 @@ public class Tree<N> {
     /**
      * The DNA sequence in the node
      */
-    protected char[] DNASequence;
+    protected char[] dnaSequence;
 }

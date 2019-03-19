@@ -7,8 +7,12 @@ import org.junit.Test;
  */
 
 /**
- * @author amalone46
- *
+ * @author juliam8
+ * @author abbym1
+ * @version 2019-03-02
+ * 
+ * Flyweight Node Test Object
+ * *description*
  */
 public class FlyweightNodeTest {
 

@@ -7,8 +7,12 @@ import org.junit.Test;
  */
 
 /**
- * @author jmkuz
- *
+ * @author juliam8
+ * @author abbym1
+ * @version 2019-03-02
+ * 
+ * Internal Node Test Object
+ * *description*
  */
 public class InternalNodeTest {
 
@@ -22,7 +26,7 @@ public class InternalNodeTest {
         assertTrue(n.c().isFlyweight());
         assertTrue(n.g().isFlyweight());
         assertTrue(n.t().isFlyweight());
-        assertTrue(n.$().isFlyweight());
+        assertTrue(n.getMoney().isFlyweight());
         assertFalse(n.isFlyweight());
         assertFalse(n.isLeaf());
     }
@@ -171,7 +175,7 @@ public class InternalNodeTest {
         assertTrue(n.c().isFlyweight());
         assertTrue(n.g().isFlyweight());
         assertTrue(n.t().isFlyweight());
-        assertTrue(n.$().isFlyweight());
+        assertTrue(n.getMoney().isFlyweight());
         assertEquals(((LeafNode) ((InternalNode) n).a()).dna(), seq1);
     }
 
@@ -188,7 +192,7 @@ public class InternalNodeTest {
         assertTrue(n.c().isFlyweight());
         assertTrue(n.a().isFlyweight());
         assertTrue(n.t().isFlyweight());
-        assertTrue(n.$().isFlyweight());
+        assertTrue(n.getMoney().isFlyweight());
         assertEquals(((LeafNode) ((InternalNode) n).g()).dna(), seq1);
     }
 
@@ -205,7 +209,7 @@ public class InternalNodeTest {
         assertTrue(n.a().isFlyweight());
         assertTrue(n.g().isFlyweight());
         assertTrue(n.t().isFlyweight());
-        assertTrue(n.$().isFlyweight());
+        assertTrue(n.getMoney().isFlyweight());
         assertEquals(((LeafNode) ((InternalNode) n).c()).dna(), seq1);
     }
 
@@ -222,7 +226,7 @@ public class InternalNodeTest {
         assertTrue(n.c().isFlyweight());
         assertTrue(n.g().isFlyweight());
         assertTrue(n.a().isFlyweight());
-        assertTrue(n.$().isFlyweight());
+        assertTrue(n.getMoney().isFlyweight());
         assertEquals(((LeafNode) ((InternalNode) n).t()).dna(), seq1);
     }
 
@@ -239,12 +243,12 @@ public class InternalNodeTest {
         
         char[] seq3 = new char[]{'T'};
         DNATreeNode exact = new LeafNode(seq3);
-        ((InternalNode) n.t()).set$(exact);
+        ((InternalNode) n.t()).setMoney(exact);
         
         assertTrue(n.c().isFlyweight());
         assertTrue(n.g().isFlyweight());
         assertTrue(n.a().isFlyweight());
-        assertEquals(((LeafNode) ((InternalNode) n.t()).$()).dna(), seq3);
+        assertEquals(((LeafNode) ((InternalNode) n.t()).getMoney()).dna(), seq3);
     }
 
     /**
@@ -336,7 +340,7 @@ public class InternalNodeTest {
         char[] seq5 = new char[]{'A'};
         n.insert(seq5, 1, true);
         
-        assertEquals(((LeafNode) ((InternalNode) n.a()).$()).dna(), seq5);
+        assertEquals(((LeafNode) ((InternalNode) n.a()).getMoney()).dna(), seq5);
     }
 
     /**
@@ -363,7 +367,7 @@ public class InternalNodeTest {
         assertTrue(n.c().isFlyweight());
         assertTrue(n.g().isFlyweight());
         assertTrue(n.t().isFlyweight());
-        assertTrue(n.$().isFlyweight());
+        assertTrue(n.getMoney().isFlyweight());
     }
 
 }

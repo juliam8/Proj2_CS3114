@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 /**
  * @author juliam8
@@ -26,6 +25,7 @@ public interface DNATreeNode {
      * Inserts a node with the sequence specified
      * @param sequence the DNA sequence to insert
      * @param level the level for recursive insertion
+     * @param print whether to print the inserted node's level
      * @return DNATreeNode the node that was inserted
      */
     DNATreeNode insert(char[] sequence, int level, boolean print);
@@ -47,8 +47,8 @@ public interface DNATreeNode {
     
     /**
      * @param sequence the sequence to find and print
-     * @param level
-     * @param curSearch
+     * @param level the level at which the search is
+     * @param curSearch the search variables for this instance
      */
     void search(char[] sequence, int level, SequenceSearch curSearch);
         
