@@ -5,7 +5,9 @@
  * @version 2019-03-02
  *
  * DNA Node Object
- * *description*
+ * Object that holds the shared members between the three 
+ *      types of nodes within the DNA tree. The three types
+ *      of nodes are internal nodes, leaf nodes, and flyweight nodes.
  */
 public interface DNATreeNode {
     
