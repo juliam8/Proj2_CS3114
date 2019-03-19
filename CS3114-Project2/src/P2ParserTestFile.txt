@@ -1,7 +1,14 @@
-insert A
 insert T
-remove A
+insert TA
 print
-print lengths
-print stats
+search A
 search T
+search T$
+search TA
+search TA$
+remove TA
+search A
+search T
+search T$
+search TA
+search TA$
