@@ -4,7 +4,6 @@ insert AAAAT
 insert C
 insert AAAAA
 print
-<<<<<<< HEAD
 remove AAAAA
 print
 remove AAAAT
@@ -13,7 +12,3 @@ remove C
 print
 remove AAAAG
 print
-=======
-insert TC
-insert TCC
->>>>>>> bce23acdb656b6e03f0c340cc320ee88ba3113e1

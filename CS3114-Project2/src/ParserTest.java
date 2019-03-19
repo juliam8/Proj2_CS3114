@@ -24,7 +24,7 @@ public class ParserTest {
         
         // parse is a Parser object used to interpret the 
         // input file contents and execute commands
-        Parser parse = new Parser(new File("src\\huliaInput.txt"), myTree);
+        Parser parse = new Parser(new File("src\\P2sampleinput.txt"), myTree);
         parse.execute();
         assertNotEquals(parse, 0);
     }
