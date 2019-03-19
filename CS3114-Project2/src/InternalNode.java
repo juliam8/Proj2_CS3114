@@ -173,7 +173,7 @@ public class InternalNode implements DNATreeNode {
             if (curSearch.getExactMatch()) {
                 cashMoney.search(sequence, level, curSearch);
             }
-                else {
+            else {
                 //if not exact, search every child
                 a.search(sequence, level, curSearch);
                 c.search(sequence, level, curSearch);
