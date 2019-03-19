@@ -52,4 +52,6 @@ public interface DNATreeNode {
      */
     void search(char[] sequence, int level, SequenceSearch curSearch);
     
+    boolean canShrink();
+    
 }

@@ -1,10 +1,12 @@
 
-insert AAAG
+insert AAAAG
 print
-insert AAAT
-insert AAAC
+insert AAAAT
+insert AAAAC
 insert A
 print
-remove AAAG
+remove AAAAC
 
+print
+remove AAAAT
 print
