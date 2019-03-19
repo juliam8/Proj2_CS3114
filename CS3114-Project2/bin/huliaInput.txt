@@ -2,6 +2,7 @@ insert AG
 insert AGG
 insert CTC
 insert CCCCCGGGGTTT
+insert CCCCC
 insert A
 insert TA
 insert TAA
