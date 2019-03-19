@@ -44,15 +44,14 @@ public class DNAtree {
    * 
    * 
    */
-  public static void main(String[] args) throws FileNotFoundException{
+    public static void main(String[] args) throws FileNotFoundException {
+        // myTree is the DNA tree used DNA sequence nodes
+        Tree<DNATreeNode> myTree;
+        myTree = new Tree<DNATreeNode>();
       
-          // myTree is the DNA tree used DNA sequence nodes
-          Tree<DNATreeNode> myTree;
-          myTree = new Tree<DNATreeNode>();
-          
-          // parse is a Parser object used to interpret the 
-          // input file contents and execute commands
-          Parser parse = new Parser(new File(args[0]), myTree);
-          parse.execute();
-      }
-  }
+        // parse is a Parser object used to interpret the 
+        // input file contents and execute commands
+        Parser parse = new Parser(new File(args[0]), myTree);
+        parse.execute();
+    }
+}

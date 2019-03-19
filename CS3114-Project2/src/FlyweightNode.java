@@ -1,11 +1,8 @@
-import java.util.ArrayList;
 
 /**
  * @author juliam8
  * @author abbym1
  * @version 2019-03-02
- * @param 
- * @param 
  * 
  * Flyweight Node Object
  * *description*
@@ -15,12 +12,14 @@ public class FlyweightNode implements DNATreeNode {
     /** 
      * Constructor for FlyweightNode class
      */
-    FlyweightNode(){}
+    FlyweightNode() {
+    }
     
     /**
      * Replaces empty node with a leaf node
      * @param sequence the DNA sequence to insert
      * @param level the level at which to insert
+     * @param print the boolean that dictates whether to print
      * @return the new node 
      */
     public DNATreeNode insert(char[] sequence, int level, boolean print) {
@@ -30,6 +29,12 @@ public class FlyweightNode implements DNATreeNode {
         return new LeafNode(sequence);
     }
     
+    /**
+     * Remove helper
+     * @param sequence the sequence to remove
+     * @param level the level at which the node is
+     * @return the removed DNA tree node 
+     */
     public DNATreeNode remove(char[] sequence, int level) {
         return this;
     }
@@ -46,10 +51,11 @@ public class FlyweightNode implements DNATreeNode {
     /**
      * Finds a sequence
      * @param sequence the DNA sequence to find
+     * @param level the level at which the node is
+     * @param curSearch the search variables
      */
     public void search(char[] sequence, int level, SequenceSearch curSearch) {
         curSearch.incrementNumOfNodesVisited();
-        return;        
     }
     
     
@@ -58,7 +64,7 @@ public class FlyweightNode implements DNATreeNode {
      * @return the flyweight node
      */
     public DNATreeNode getFlyweight() {
-        return emptyFly;
+        return EMPTY_FLY;
     }
     
     /** 
@@ -80,7 +86,7 @@ public class FlyweightNode implements DNATreeNode {
     /**
      * Private member variable for Flyweight node
      */
-    private static final FlyweightNode emptyFly = new FlyweightNode();
+    private static final FlyweightNode EMPTY_FLY = new FlyweightNode();
 
 
 }

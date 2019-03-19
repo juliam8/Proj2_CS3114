@@ -30,6 +30,12 @@ public interface DNATreeNode {
      */
     DNATreeNode insert(char[] sequence, int level, boolean print);
     
+    /**
+     * Removes a node with the sequence specified
+     * @param sequence the DNA sequence to remove
+     * @param level the level for recursive remove
+     * @return DNATreeNode the node that was remove
+     */
     DNATreeNode remove(char[] sequence, int level);
     
     /**
