@@ -11,9 +11,6 @@
  * sequences. The nodes are created using an interface
  * (inheritance) of DNA Tree Nodes. A flyweight is used
  * for empty leaf nodes to save space. 
- * 
- * Each Tree Object has a root node and a count of how
- * many nodes are in the tree.
  */
 public class Tree<N> {
     
@@ -39,6 +36,9 @@ public class Tree<N> {
      * @param sequence the sequence to insert
      */
     public void insert(char[] sequence) {
+        if (nodeCount == 0) {
+            System.out.println(0);
+        }
         root = root.insert(sequence, 1, true);
         nodeCount++;
     }
